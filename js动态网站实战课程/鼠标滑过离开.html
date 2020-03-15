@@ -1,0 +1,50 @@
+<head>
+    <title>mouse event</title>
+    <style>
+        #aid {
+            width: 300px;
+            height: 300px;
+            background-color: greenyellow;
+            margin: auto
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="aid">
+        hello world
+    </div>
+    <div id="log"></div>
+    <script>
+        let div = document.getElementById('aid')
+        let log = document.getElementById('log')
+        div.onmousedown = function () {
+            log.innerHTML = "mousedown <br>" + log.innerHTML
+        }
+        div.onmouseup = function () {
+            log.innerHTML = "mouseup <br>" + log.innerHTML
+        }
+        div.onmousemove = function () {
+            log.innerHTML = "onmousemove <br>" + log.innerHTML
+        }
+
+
+        div.onmouseenter = function () {
+            log.innerHTML = "mouseenter <br>" + log.innerHTML
+        }
+        div.onmouseover = function () {
+            log.innerHTML = "onmouseover <br>" + log.innerHTML
+        }
+
+
+        div.onmouseleave = function () {
+            log.innerHTML = "onmouseleave <br>" + log.innerHTML
+        }
+        div.onmouseout = function () {
+            log.innerHTML = "onmouseout <br>" + log.innerHTML
+        }
+
+
+    </script>
+</body>
