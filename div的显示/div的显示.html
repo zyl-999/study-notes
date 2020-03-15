@@ -1,0 +1,24 @@
+<html>
+<!-- 此程序是:一个div开始是隐藏的，点击按钮之后显示div -->
+
+<head>
+    <title>登录</title>
+    <meta charset="utf-8"/>  
+    <!-- charset：字符集，用来设置文档字符的编码方式，其中最常用的是utf-8 -->
+    <style>
+        #did {
+            width: 200px;
+            height: 300px;
+            display: none;
+            background: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="点击" onclick="document.getElementById('did').style.display = 'block'">
+    <div id="did"></div>
+
+</body>
+
+</html>
