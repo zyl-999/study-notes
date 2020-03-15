@@ -1,0 +1,37 @@
+<head>
+    <title>键盘控制div位置</title>
+    <style>
+        #lianxi {
+            height: 200px;
+            width: 300px;
+            background-color: indigo;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="position: relative; min-height: 90vh; margin: 10px;border: 1px solid #333;">
+        <div id="lianxi" style="left: 0px; top: 0px;"></div>
+    </div>
+    <script>
+        let divStyle = document.getElementById('lianxi').style // dom只能访问div里的style属性
+        let keyboardHandle = function (e) {
+            if (e.key === "ArrowLeft") {
+                divStyle.left = Number.parseInt(divStyle.left) - 10 + 'px'
+            }
+            if (e.key === "ArrowRight") {
+                divStyle.left = Number.parseInt(divStyle.left) + 10 + 'px'
+            }
+            if (e.key === "ArrowUp") {
+                divStyle.top = Number.parseInt(divStyle.top) - 10 + 'px'
+            }
+            if (e.key === "ArrowDown") {
+                divStyle.top = Number.parseInt(divStyle.top) + 10 + 'px'
+            }
+        }
+
+        window.addEventListener("keydown", keyboardHandle);
+
+    </script>
+</body>
