@@ -1,0 +1,73 @@
+<head>
+    <title>小球移动</title>
+    <style>
+        #curcle {
+            width: 130px;
+            height: 130px;
+            background-color: hotpink;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;">
+    <div id="curcle" style="position: absolute;left:0px;top: 0;"></div>
+    <script>
+        const movedis = document.getElementById('curcle').style;
+        const maxLeft = window.screen.width - 130
+        const maxTop = window.document.body.clientHeight - 130
+        const speed = 16;
+        const step = 5
+        let t = setInterval(moveRight, speed)
+        //向右移动
+        function moveRight() {
+            let n = parseInt(movedis.left)
+            n += step;
+            movedis.left = n + 'px'
+            if (n >= maxLeft) {
+                clearInterval(t)
+                t = setInterval(moveBottom, speed)
+
+            }
+        }
+        //向下移动
+        function moveBottom() {
+            let dis = parseInt(movedis.top)
+            dis += step;
+            movedis.top = dis;
+            if (dis >= maxTop) {
+                clearInterval(t);
+                t = setInterval(moveLeft, speed);
+            }
+        }
+        //向左移动
+        function moveLeft() {
+            let dis = parseInt(movedis.left)
+            dis -= step;
+            movedis.left = dis;
+            if (dis <= 0) {
+                clearInterval(t)
+                t = setInterval(moveTop, speed)
+            }
+        }
+        //向上移动
+        function moveTop() {
+            let dis = parseInt(movedis.top)
+            dis -= step;
+            movedis.top = dis;
+            if (dis <= 0) {
+                clearInterval(t);
+                t = setInterval(moveRight, speed);
+            }
+        }
+
+
+
+
+
+
+    </script>
+
+
+    </script>
+</body>

@@ -1,0 +1,79 @@
+<head>
+    <title>小球移动升级</title>
+    <style>
+        #curcle {
+            width: 130px;
+            height: 130px;
+            background-color: burlywood;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body style="overflow: hidden;" onclick="dianji()">
+    <div id="curcle" style="position: absolute;left:0px;top: 0;"></div>
+    <script>
+        const movedis = document.getElementById('curcle').style;
+        const maxLeft = window.screen.width - 130
+        const maxTop = window.document.body.clientHeight - 130
+        const speed = 16;
+        const step = 5
+
+        let moveDirect = 'R'
+        let timmerId = setInterval(move, speed)
+
+        function move() {
+
+            let l = parseInt(movedis.left)
+            let t = parseInt(movedis.top)
+
+            if (moveDirect === 'R') {
+                l += step;
+            }
+            if (moveDirect === 'L') {
+                l -= step;
+            }
+            if (moveDirect === 'U') {
+                t -= step;
+            }
+            if (moveDirect === 'D') {
+                t += step;
+            }
+            if (l <= 0 && t >= maxTop) {
+                moveDirect = "U"
+
+            }
+            if (l <= 0 && t <= 0) {
+                moveDirect = "R"
+
+            }
+            if (l >= maxLeft && t <= 0) {
+                moveDirect = "D"
+
+            }
+            if (l >= maxLeft && t >= maxTop) {
+                moveDirect = "L"
+
+            }
+            movedis.left = l
+            movedis.top = t
+        }
+        function dianji() {
+            if (timmerId) {
+                console.log('if')
+                clearInterval(timmerId)
+                timmerId = null
+            } else {
+                console.log('else')
+                timmerId = setInterval(move, speed);
+            }
+
+        }
+
+
+
+    </script>
+
+
+    </script>
+</body>

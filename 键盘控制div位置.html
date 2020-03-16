@@ -11,13 +11,18 @@
 </head>
 
 <body>
+    <h2 style="text-align: center;;">10s 内可以移动div</h2>
     <div style="position: relative; min-height: 90vh; margin: 10px;border: 1px solid #333;">
         <div id="lianxi" style="left: 0px; top: 0px;"></div>
     </div>
     <script>
-        let divStyle = document.getElementById('lianxi').style // dom只能访问div里的style属性
+        let divStyle = document.getElementById('lianxi').style // dom只能访问自己本身的style属性，不能访问样式表里的样式
+
+        /**
+         * @param {KeyboardEvent}e
+         * */
         let keyboardHandle = function (e) {
-            if (e.key === "ArrowLeft") {
+            if (e.key === "ArrowLeft" && e.ctrlKey) {
                 divStyle.left = Number.parseInt(divStyle.left) - 10 + 'px'
             }
             if (e.key === "ArrowRight") {
@@ -29,9 +34,14 @@
             if (e.key === "ArrowDown") {
                 divStyle.top = Number.parseInt(divStyle.top) + 10 + 'px'
             }
+
         }
 
         window.addEventListener("keydown", keyboardHandle);
+
+        setTimeout(() => {
+            window.removeEventListener("keydown", keyboardHandle)
+        }, 10000);
 
     </script>
 </body>
