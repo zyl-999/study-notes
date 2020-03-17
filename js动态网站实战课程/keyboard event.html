@@ -1,0 +1,29 @@
+<head>
+    <title>keyboard event</title>
+</head>
+
+<body>
+    <input>
+    <script>
+
+        /**
+         * @param {KeyboardEvent} e //@param是申明元素e的类型的，方便调用
+         */
+        function keyupHandler(e) {
+
+            console.log(`   
+            是否按了alt键：   ${e.altKey},   
+            是否按了shift键： ${e.shiftKey},      
+            是否按了ctrl键：  ${e.ctrlKey},   
+            key:              `+ e.key + `,    
+            keyCode:          `+ e.keyCode)
+
+        }
+        window.addEventListener("keyup", keyupHandler)
+
+
+        // window.removeEventListener("keyup",keyupHandler)
+
+    </script>
+
+</body>
