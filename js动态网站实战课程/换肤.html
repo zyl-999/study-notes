@@ -1,0 +1,50 @@
+<head>
+    <title>换肤</title>
+    <style>
+        /* .right-btn {
+            position: absolute;
+            left: 92vw;
+        }
+
+        #Night {
+            top: 50vh;
+        }
+
+        #Protect {
+            top: 55vh;
+        }
+
+        #N {
+            top: 60vh;
+        } */
+
+        .right-btns {
+            float: right;
+            margin-top: 40vh;
+            margin-right: 5vw;
+
+        }
+
+        .right-btns .right-btn {
+            display: block;
+            margin-bottom: 1em;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: white;">
+    <div class="right-btns">
+        <!-- <button class="right-btn" id="Night" onclick="btn1('wheat')">夜间阅读模式</button>
+        <button class="right-btn" id="Protect" onclick="btn1('rgb(150, 173, 102)')">护眼阅读模式</button>
+        <button class="right-btn" id="N" onclick="btn1('white')">默认</button> -->
+        <input type="color" onchange="btn1(event.target.value)">
+    </div>
+
+    <script>
+        function btn1(colorStr) {
+            // console.log(colorStr)
+            document.body.style.backgroundColor = colorStr
+        }
+    </script>
+</body>

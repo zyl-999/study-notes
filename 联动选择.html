@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" name="" id="all">全选
+    <hr>
+    <div id="inp">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+        <input type="checkbox" name="" id="">
+    </div>
+    <script>
+        let All = document.getElementById('all')
+        let Inp = document.getElementById('inp')
+        let Checks = Inp.getElementsByTagName('input')
+
+        All.onclick = function () {
+            for (let i = 0; i < Checks.length; i++) {
+                Checks[i].checked = All.checked;
+            }
+        }
+        // 加事件
+        for (let i = 0; i < Checks.length; i++) {
+            Checks[i].onclick = function () {
+                let count = 0;
+                // 看有几个选中了
+                for (let i = 0; i < Checks.length; i++) {
+                    if (Checks[i].checked) {
+                        count++;
+                    }
+                }
+                // 判断是否全选中
+                if (count === Checks.length) {
+                    All.checked = true;
+                }
+                else {
+                    All.checked = false;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<head>
+    <title>全选实现</title>
+</head>
+
+<body>
+    <input type="button" value="全选" id="btn">
+    <div>
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+    </div>
+    <br>
+    <br>
+    <input type="button" value="全选" id="btn">
+    <div>
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        
+    </div>
+    <script>
+        let qx = document.getElementById('btn')
+        let Inp = document.getElementsByTagName('input')
+        qx.onclick = function () {
+            // // 是否存在选中的
+            // let hasChecked = false;
+            // for (let i = 0; i < Inp.length; i++) {
+            //     if (Inp[i].checked) {
+            //         hasChecked = true;
+            //         break;
+            //     }
+            // }
+
+            // // 第二步：
+            // for (let i = 0; i < Inp.length; i++) {
+            //     if (hasChecked) { // 存在选中的，全部取消选中
+            //         Inp[i].checked = false
+            //     } else {  // 不存在，才全部选中
+            //         Inp[i].checked = true
+            //     }
+
+            // }
+
+            // 是否存在全选中的
+            let allChecked = true;
+            for (let i = 0; i < Inp.length; i++) {
+                if (!Inp[i].checked) {
+                    allChecked = false;
+                    break;
+                }
+            }
+
+            // 第二步：
+            for (let i = 0; i < Inp.length; i++) {
+                if (allChecked) {
+                    Inp[i].checked = false
+                } else {
+                    Inp[i].checked = true
+                }
+
+            }
+        }
+    </script>
+</body>

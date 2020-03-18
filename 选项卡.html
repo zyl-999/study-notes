@@ -1,0 +1,68 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box div {
+            width: 200px;
+            height: 200px;
+            display: none;
+            border: cyan solid 1px;
+        }
+
+        input {
+            padding: .25em 1.5em;
+            margin: 0;
+
+        }
+
+        .active {
+            background-color: #fff;           
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <input class="active" type="button" value="a">
+        <input type="button" value="b">
+        <input type="button" value="c">
+
+        <div style="display:block;">123</div>
+        <div>456</div>
+        <div>789</div>
+    </div>
+
+
+
+    <script>
+        let box = document.getElementById('box')
+        let btns = box.getElementsByTagName('input')
+        let divs = box.getElementsByTagName('div')
+
+        //加事件
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].ff = i
+            btns[i].onclick = function () {
+                  //隐藏所有div、class样式
+                for (var j = 0; j < divs.length; j++) {
+                    divs[j].style.display = 'none'
+                    // btns[j].className=''
+                    btns[j].setAttribute('class', '')
+                }
+               //把对应的选项卡下的div展示出来，同时展示选项卡选中时的样式
+                divs[this.ff].style.display = 'block'
+                // this.className="active"
+                this.setAttribute('class', 'active')
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
