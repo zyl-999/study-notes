@@ -1,0 +1,38 @@
+<head>
+    <!--
+     要求   生成一个数组，长度为7，数字大小在1-31之间，不能重复
+        1.生成一个数
+        2.生成7个数
+        3.不重复
+    -->
+</head>
+
+<body>
+    <script>
+        let arr = []
+
+        function rnd(n, m) {
+            return parseInt(Math.random() * (m - n) + n)
+        }
+
+        function findinarr(num, arr1) {
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] == num) {
+                    return true
+                }
+            }
+            return false
+        }
+        function addZero(a) {
+            return a < 10 ? "0" + a : '' + a
+
+        }
+        while (arr.length < 7) {
+            let random = rnd(1, 31)
+            if (findinarr(random, arr) == false) {
+                arr.push(addZero(random))
+            }
+        }
+        document.write(arr)
+    </script>
+</body>
