@@ -1,0 +1,26 @@
+<body>
+    <input type="text" value="00:00" id="time">
+    <input type="button" id="start" value="开始">
+    <input type="button" id="stop" value="停止">
+    <script>
+        let oTime = document.querySelector('#time')
+        let oStart = document.querySelector('#start')
+        let oStop = document.querySelector('#stop')
+        let timer = null
+        function addZe(n) {
+            return n < 10 ? '0' + n : '' + n
+        }
+        oStart.onclick = function () {
+            let s = 0;
+            clearInterval(timer)
+            timer = setInterval(function () {
+                s++;
+                oTime.value = addZe(parseInt(s/60)) + ':' + addZe(s % 60)
+            }, 50);
+        }
+        oStop.onclick = function () {
+            clearInterval(timer)
+        }
+
+    </script>
+</body>

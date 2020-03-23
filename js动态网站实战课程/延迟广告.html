@@ -1,0 +1,26 @@
+<body>
+    <img src="./yantaohui.jpg" alt="" id="img1" style="display: none;">
+   <!-- <div id="div1"></div> -->
+    <script>
+        let showImg = document.getElementById('img1');
+        let timer1 = null;
+        let timer2 = null;
+        timer1 = setTimeout(ad => {
+            showImg.style.display = 'block';
+            clearTimeout(timer2);
+            timer2 = setTimeout(ad1 => {
+                showImg.style.display = 'none'
+            }, 2000);
+        }, 2000);
+
+        showImg.onmouseover = function () {
+            clearTimeout(timer2);
+        }
+        showImg.onmouseout = function () {
+            timer2 = setTimeout(ad1 => {
+                showImg.style.display = 'none'
+            }, 2000);
+        }
+
+    </script>
+</body>

@@ -1,0 +1,81 @@
+<head>
+    <style>
+        #box div {
+            width: 300px;
+            height: 300px;
+            display: none;
+            border: 1px solid red;
+        }
+
+        .on {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+        <a href="javascript:;" id="prev">
+            <-</a>
+                <input type="button" value="图片" class="on">
+                <input type="button" value="专栏">
+                <input type="button" value="热点">
+                <a href="javascript:;" id="next">-></a>
+                <div style="display:block;">图片</div>
+                <div>专栏</div>
+                <div>热点</div>
+    </div>
+    <script>
+        let box = document.getElementById('box')
+        let prev = document.getElementById('prev')
+        let next = document.getElementById('next')
+        let btn = box.getElementsByTagName('input')
+        let div = box.getElementsByTagName('div')
+        let inow=0;
+        let timer=null;
+        //相同部分，用函数封装
+        function same() {
+            for (let i = 0; i < btn.length; i++) {
+                btn[i].className = ''
+                div[i].style.display = 'none'
+            }
+            btn[inow].className = 'on'
+            div[inow].style.display = 'block'
+        }
+        //点击按钮播放
+        
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].onclick = function () {              
+                for (let i = 0; i < btn.length; i++) {
+                btn[i].className = ''
+                div[i].style.display = 'none'
+            }
+            btn[i].className = 'on'
+            div[i].style.display = 'block'
+            }
+        } //往下播放 
+        function fnNext(){
+            same()
+            inow++;
+            if (inow == btn.length){inow= 0}               
+        }     
+        next.onclick = fnNext;
+        //往前播放
+        prev.onclick = function () {
+            same()
+            inow--;
+            if (inow == -1) {inow = btn.length - 1 }
+        }
+        clearInterval(timer);
+        timer=setInterval(fnNext,1000)
+            
+            
+        box.onmouseover = function () {
+            clearInterval(timer);
+        }
+        box.onmouseout = function(){
+            timer=setInterval(fnNext,1000)
+        }
+    </script>
+</body>

@@ -1,0 +1,84 @@
+<head>
+    <title>京东双色球</title>
+    <style>
+        .circle {
+            display: inline-block;
+            border-radius: 50%;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            margin: .25em;
+            text-align: center;
+
+        }
+
+        .red-circle {
+            border: 1px solid red;
+            background-color: red;
+        }
+
+        .blue-circle {
+            border: 1px solid blue;
+            background-color: blue;
+            color: white;
+        }
+
+        #nums-div2,
+        #nums-div1 {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        #btn2 {
+            margin-left: 14em;
+        }
+        #nums-div1{
+            width: 16em;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="红色球7注" id="btn1" onclick="clickFn('nums-div1','red-circle',7)">
+    <input type="button" value="蓝色球5注" id="btn2" onclick="clickFn('nums-div2','blue-circle',5)">
+    <br>
+    <div id="nums-div1"></div>
+    <div id="nums-div2"></div>
+    <script>
+        //首先创建随机数函数       
+        function rnd(n, m) {
+            return parseInt(Math.random() * (m - n) + n)
+        };
+        //找到新加入的随机数是否在已有的数组中
+        function findInArr(num, arr1) {
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] == num) {
+                    return true
+                }
+            }
+            return false;
+        }
+        //如果随机数是个位数，便在这个数前加0
+        function addZero(b) {
+            return b < 10 ? "0" + b : "" + b
+        }
+
+
+        function clickFn(divId, clorClsName, num) {
+            const numDiv = document.querySelector("#" + divId)  // #nums-div
+            let arr = [];
+            //如果数组arr长度小于7，便加入不重复的随机数，直到
+            while (arr.length < num) {
+                let newRnd = rnd(1, 26)
+                if (findInArr(newRnd, arr) == false) {
+                    arr.push(addZero(newRnd));
+                }
+            }
+            // arr = arr.map(str => (`<div class="circle ${clorClsName}">${str}</div>`))
+            for (let i = 0; i < arr.length; i++) {                
+                arr[i] = `<div class="circle ${clorClsName}">${arr[i]}</div>`
+            }
+            numDiv.innerHTML += arr.join('') + '<br>'
+        }        
+    </script>
+</body>
