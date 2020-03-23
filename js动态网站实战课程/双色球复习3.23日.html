@@ -1,0 +1,86 @@
+<head>
+    <title>双色球</title>
+    <style>
+        .circle {
+            display: inline-block;
+            border-radius: 50%;
+            width: 1.5em;
+            height: 1.5em;
+            line-height: 1.5em;
+            margin: .25em;
+            text-align: center;
+        }
+
+        .circle.red {
+            background-color: red;
+
+        }
+
+        .circle.blue {
+            background-color: blue;
+            color: white;
+        }
+
+        #blueBall {
+            margin-left: 8em;
+        }
+
+        #div2,
+        #div1 {
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" value="红色球5注" id="redBall">
+    <input type="button" value="蓝色球5注" id="blueBall">
+    <br>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    </div>
+
+    <script>
+        function rnd(m, n) {
+            return parseInt(Math.random() * (n - m) + m)
+        };
+        function rndNum(n) {
+            return n < 10 ? '0' + n : '' + n
+
+        };
+        function numExistInArray(num, arr1) {
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i] === num) {
+                    return true
+                }
+            }
+            return false
+        }
+
+
+        // showBalls()
+        function clickShowBalls(divId, className, num) {
+            return function () {
+                let arr = [];
+                while (arr.length < num) {
+                    let rndm = rnd(1, 31)
+                    if (numExistInArray(rndm, arr) === false) {
+                        arr.push(rndm)
+                    }
+                }
+                for (let i = 0; i < arr.length; i++) {
+                    let str = rndNum(arr[i])
+                    arr[i] = `<div class="circle ${className}">${str}</div>`
+                }
+                let eDiv = document.getElementById(divId)        
+                eDiv.innerHTML += arr.join('') + '<br>'
+            }
+        }
+        let clikBtn = document.getElementById('redBall')
+        clikBtn.onclick = clickShowBalls('div1', 'red', 7)
+        let clikBtn2 = document.getElementById('blueBall')
+        clikBtn2.onclick = clickShowBalls('div2', 'blue', 5)
+
+    </script>
+</body>
