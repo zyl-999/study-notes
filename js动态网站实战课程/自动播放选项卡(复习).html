@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #kBtn div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            display: none;
+        }
+
+        .on {
+            background-color: salmon;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="kBtn">
+        <input type="button" value="政治" class='on'>
+        <input type="button" value="经济">
+        <input type="button" value="军事">
+        <div id='div1' style="display: block;">如何选出合适领导人</div>
+        <div>在全球疫情下，世界经济问题</div>
+        <div>中国人民解放军军演</div>
+    </div>
+    <script>
+        let oBtn = document.getElementById('kBtn')
+        let oP = oBtn.getElementsByTagName('input')
+        let oDiv = oBtn.getElementsByTagName('div')
+        let inow = 0;
+        let timer = null;
+        for (let i = 0; i < oP.length; i++) {
+            oP[i].onclick = function () {
+                for (let i = 0; i < oP.length; i++) {
+                    oP[i].className = ''
+                    // oP[i].style.backgroundColor = ''
+                    oDiv[i].style.display = 'none'
+                }
+                oP[i].className = 'on'
+                // oP[i].style.backgroundColor = 'salmon'
+                oDiv[i].style.display = 'block'
+            }
+        }
+        function show() {
+            for (let i = 0; i < oP.length; i++) {
+                oP[i].className = ''
+                // oP[i].style.backgroundColor = ''
+                oDiv[i].style.display = 'none'
+            }
+            oP[inow].className = 'on'
+            // oP[inow].style.backgroundColor = 'salmon'
+            oDiv[inow].style.display = 'block'
+
+            inow++;
+            if (inow == oP.length) { inow = 0 }
+        }
+        clearInterval(timer);
+        timer = setInterval(show, 1000);
+        oBtn.onmouseover = function () {
+            clearInterval(timer)
+        };     
+        oBtn.onmouseout = function () {
+            timer = setInterval(show, 1000);
+            
+        };
+    </script>
+
+</body>
+
+</html>

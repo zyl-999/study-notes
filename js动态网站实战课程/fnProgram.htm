@@ -1,0 +1,19 @@
+<div>请看console：</div>
+<script>
+
+    function doEvery5sec(fn) {
+        let tid = setInterval(function () {
+            if (fn() === undefined) {
+                clearInterval(tid)
+            }
+        }, 1000)
+    }
+
+    let arr = [5, 4, 7, 3, 6, 1, 3, 2]
+    doEvery5sec(function () {
+        let num = arr.shift()
+        console.log(num)
+        return num
+    })
+
+</script>

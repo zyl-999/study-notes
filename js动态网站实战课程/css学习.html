@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                /* background-image: url('./yantaohui.jpg');            */
+                /* background-color: burlywood; */   
+                /* background-repeat: no-repeat; */
+               /* background-position: 100px 50px; */
+                /* background-position: center; */
+                /*图片水平，垂直居中*/
+                /* background-position: 100px center */        
+                /* background-size: auto 300px; */
+                /* background-size: 100% 100%;            /*保持图片覆盖整个页面，会变形  */
+                /* background-size: cover; */             /*保持图片覆盖整个页面，不变形*/
+               /* background-size: contain;   */             /*保持图片等比缩放，不变形，但不保持页面缩小时覆盖整个页面*/
+               
+            }    
+            .div1 {
+                margin: 30px auto;
+                width: 800px;
+                height: 500px;
+                border: 1px solid blue;
+                color: violet;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .div2{
+                width: 400px;
+                height: 200px;
+                border: inherit;
+                margin: inherit;
+                color: initial;
+                font-weight: initial;
+           }
+        </style>
+    </head>
+    
+    <body>
+        <div class="div1" style="font-size: unset;">
+            外面的文字
+            <div class="div2">
+                里面的文字
+            </div>
+        </div>
+    </body>
+</html>

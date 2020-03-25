@@ -16,8 +16,8 @@
 <body>
     <div id="box">
 
-        <a href="javascript:;" id="prev">
-            <-</a>
+               <a href="javascript:;" id="prev">
+                <-</a>
                 <input type="button" value="图片" class="on">
                 <input type="button" value="专栏">
                 <input type="button" value="热点">
@@ -27,7 +27,7 @@
                 <div>热点</div>
     </div>
     <script>
-        let box = document.getElementById('box')
+        let oBox = document.getElementById('box')
         let prev = document.getElementById('prev')
         let next = document.getElementById('next')
         let btn = box.getElementsByTagName('input')
@@ -71,10 +71,10 @@
         timer=setInterval(fnNext,1000)
             
             
-        box.onmouseover = function () {
+        oBox.onmouseover = function () {
             clearInterval(timer);
         }
-        box.onmouseout = function(){
+        oBox.onmouseout = function(){
             timer=setInterval(fnNext,1000)
         }
     </script>
