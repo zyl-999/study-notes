@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #box {
+            background-color: whitesmoke;
+            width: 450px;
+        }
+        /* #name1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+            font-weight: 30px;           
+        }    
+        #content,#name1 {
+            margin: 5px;
+        } */
+        #mgshow {
+            font-size: 13px;
+            font-weight: lighter;
+            display: none;
+        }
+        .item {
+            margin: .5em 0;
+        }
+        .item label .right{
+            width: 20em;
+        }
+        .item .left {
+            display: inline-block;
+            width: 3em;
+            vertical-align: top;
+            text-align: right;
+        }
+        .item .right {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+        <div class="item">
+            <label>
+                <div class="left">姓名：</div>
+                <input class="right" type="text" id="name1">
+            </label>
+        </div>
+        <div class="item">
+            <label>
+                <div class="left">内容：</div>
+                <textarea class="right" id="content" style="height: 200px;"></textarea>
+            </label>
+        </div>
+        <div class="item">
+            <div class="left"></div>
+            <input class="right" type='button' value='提交' id="subtn">
+        </div>
+        <!-- <label>姓名：<input type="text" id="name1"></label>
+        <div style="display: flex;">
+            <span style="vertical-align: top;">内容：</span>
+            <textarea id="content" cols="30" rows="10"></textarea>
+        </div>
+        <div><input type='button' value='提交' id="subtn" style="margin-left: 3.875em;"></div> -->
+        <div id="mgshow">
+            <hr>
+            <h4>显示留言</h4>
+        </div>
+    </div>
+    <script>
+        var inName = document.getElementById('name1')
+        var msgC = document.getElementById('content')
+        var subT = document.getElementById('subtn')
+        var mgShow = document.getElementById('mgshow')
+        var oUl = document.createElement('ul')
+        mgShow.appendChild(oUl)
+        subT.onclick = function () {
+            let oLi = document.createElement('li')
+            mgShow.style.display = 'block'
+            if (inName.value == '' || msgC.value == '') {
+                alert('不能为空'); return;
+            }
+             oLi.innerHTML = '<h4>' + inName.value + '</h4><p>' + msgC.value + '</p>' + '<hr>'
+            if (oUl.children == 0) {
+                oUl.appendChild(oLi);
+            } else {
+                oUl.insertBefore(oLi, oUl.children[0])
+            }
+        }
+
+    </script>
+</body>
+
+</html>

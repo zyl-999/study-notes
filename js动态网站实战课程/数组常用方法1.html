@@ -1,0 +1,54 @@
+<body>
+    <div id="hello"></div>
+    <div id="world"></div>
+    <div id="hi"></div>
+
+    <script>
+        //--------------------------------------------------------// 
+        //1.学习：push pop shift unshift splice indexOf
+        let arr = [12, 33, 55, 32]
+        arr.shift();
+        arr.unshift(1);
+        arr.pop();
+        arr.push(3);
+        arr.splice(0, 2);       //在下标为0的位置开始减2个数
+        arr.splice(2, 3, 3, 4, 5);   //在下标为2的位置开始增加3个数:3,4,5    
+        // console.log(arr);
+        arr.indexOf(55);
+        // console.log(arr.indexOf(55)) //打印出55的下标
+        //--------------------------------------------------------//  
+        //2.学习filter
+        let arr1 = [1, 2, 3, 4, 5, 6, 7];
+        function num(age) {
+            return age > 3;
+        }
+        function you() {
+            document.getElementById('hello').innerHTML = arr1.filter(num)
+        }
+        you();
+
+        //--------------------------------------------------------//   
+        //3.学习map
+        // map()方法 返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值
+        let numbers = [4, 9, 16, 25]
+        function myfun() {
+              x=document.getElementById('world')
+              x.innerHTML=numbers.map(Math.sqrt)
+        }
+        myfun(); 
+
+        //--------------------------------------------------------//   
+        //4.学习forEach
+        //forEach()方法用于调用数组的每个元素，并将元素传递给回调函数
+
+        let demoP=document.getElementById('hi');
+            numb=[1,23,4,5,6]
+        function myfunction(item,index){
+           demoP.innerHTML=demoP.innerHTML+'index['+index+']:'+item+'<br>'
+                              
+        }
+        numb.forEach(myfunction);
+
+    </script>
+
+</body>
