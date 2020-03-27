@@ -1,0 +1,18 @@
+<body>
+    <textarea id="txt" cols="30" rows="10"></textarea>
+    <input type="button" value="运行代码" id="btn">
+
+    <script>
+        let oBtn = document.getElementById('btn')
+        let oT=document.getElementById('txt')
+        oBtn.onclick=function(){
+             //打开一个新窗口
+             let newWindow=window.open('about:blank','_blank')
+            
+             newWindow.document.write(oT.value)
+        }
+
+        console.log(window.navigator.userAgent)
+    
+    </script>
+</body>

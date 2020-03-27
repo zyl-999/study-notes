@@ -1,0 +1,66 @@
+<head>
+
+</head>
+
+<body>
+    <!-- BOM介绍 -->
+    <!-- 
+    BOM(Broser object Model)浏览器对象模型；
+    bom的对象有6种，分别是：
+    1.window
+      打开关闭窗口
+      alert弹出框
+      confirm确认框
+      prompt提示框
+    2.nevigator
+    nevigator.userAgent(简称UA，用来描述一些浏览器的版本信息)
+    3.location
+       关于URL的各种信息和方法
+       如属性
+       location.href
+       location.search
+       方法
+       reload
+    4.screen
+       检测屏幕大小
+    5.history
+       浏览器历史记录,
+       history对象属性：length，返回浏览器历史列表中的URL数量
+       history对象方法：
+       -back(),加载history列表中的前一个URL
+       -forward(),加载history列表中的下一个URL
+       -go(),加载history列表中的某一个具体页面
+     // history.back()===history.go(-2)
+    6.document
+      document.write
+    注意：
+    window对象下，包含其它
+    navigator
+    location
+    history
+    document
+    screen
+     -->
+
+    <!-- <input type="text" value="姓名">
+    <input type="button" value="你好">
+    <input type="search" name="搜索" id="sea"> -->
+
+
+    <script>
+        // document.write(window.location);
+        // document.write(location.href);
+        // document.write(location.search);    
+        // document.write(window.screen.height);
+        // document.write(window.screen.availHeight);
+        // document.write(window.screen.width);
+        // document.write(window.screen.availWidth);
+
+        // let str = confirm('确认提交吗')
+        // alert(str)  
+        let str1=prompt('厉害','不厉害')
+        alert(str1)
+        
+    </script>
+
+</body>
