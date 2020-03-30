@@ -1,0 +1,24 @@
+<body>
+    <script>
+        document.oncontextmenu = function () {
+            return false;
+        };
+        //oncontextmenu鼠标右击
+        document.onkeydown = function (event) {
+            let oevnt = ev || event;
+            if (oevnt.keyCode === 83 && oevnt.ctrlKey) {
+                return false;
+            }
+        };
+        document.onkeydown = function (ev) {
+            let oevnt = ev || event;
+            if (oevnt.keyCode === 67 && oevnt.ctrlKey) {
+                return false;
+            }
+        };
+        //更简单的办法，鼠标不能选中文字
+        document.onmousedown = function () {
+            return false;
+        };
+    </script>
+</body>

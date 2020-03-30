@@ -1,0 +1,26 @@
+<head>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+            position:absolute;
+        }
+    </style>
+</head>
+
+<body style="height: 2000px;">
+    <div id="div1"></div>
+    <script>
+        let oD = document.getElementById('div1');
+        document.onmousemove = function (ev) {
+            let sT = document.body.scrollTop || document.documentElement.scrollTop;
+            let sL = document.body.scrollLeft || document.documentElement.scrollLeft;
+            let oEV = event || ev;
+            console.log('ev.clientX:' + oEV.clientX + 'ev.clientY:' + oEV.clientY)
+            oD.style.left = oEV.clientX + sL - oD.offsetWidth / 2 + 'px';
+            oD.style.top = oEV.clientY + sT - oD.offsetHeight / 2 + 'px'
+
+        }
+    </script>
+</body>

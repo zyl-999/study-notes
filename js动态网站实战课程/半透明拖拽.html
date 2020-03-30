@@ -1,0 +1,44 @@
+<head>
+    <style>
+        .rrr {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: fixed;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1" class="rrr">
+        <input type="button" value="周维成是个大坏蛋">
+    </div>
+    <script>
+        let oDiv = document.getElementById('div1');
+        oDiv.onmousedown = function (ev) {
+            let oevent = ev || event;
+            let disX = oevent.clientX - oDiv.offsetLeft;
+            let disY = oevent.clientY - oDiv.offsetTop;
+            let newDiv = oDiv.cloneNode(true);
+            newDiv.removeAttribute('id');
+            newDiv.style.opacity = 0.2;
+            oDiv.parentNode.appendChild(newDiv);
+            document.onmousemove = function (ev) {
+                let oevent = ev || event;
+                newDiv.style.left = oevent.clientX - disX + 'px';
+                newDiv.style.top = oevent.clientY - disY + 'px';
+            }
+            document.onmouseup = function () {
+                oDiv.style.left = newDiv.offsetLeft + 'px';
+                oDiv.style.top = newDiv.offsetTop + 'px';
+                oDiv.parentNode.removeChild(newDiv);
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+            return false;
+        };
+
+
+    </script>
+</body>

@@ -1,0 +1,64 @@
+<head>
+    <style>
+             body {
+            width: 100vw;
+            height: 100vh;
+        }
+        .item{
+            border: 1px solid red;
+            display: inline-block;
+            overflow: hidden;
+            width: 480px;
+            height: 310px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item"><img _src="./_src='img1'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img2'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img3'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img4'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img5'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img6'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img7'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img8'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img9'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img10'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img11'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img12'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img13'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img14'.jpg" alt=""></div>
+    <div class="item"><img _src=" ./_src='img15'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img16'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img17'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img18'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img1'.jpg" alt=""></div>
+    <div class="item"><img _src="./_src='img1'.jpg" alt=""></div>
+</body>
+<script>
+    let t = Date.now()
+    let oImg = document.getElementsByTagName('img')
+    function render() {
+        let sT = document.documentElement.scrollTop || document.body.scrollTop
+        let cH = document.documentElement.clientHeight
+        for (let i = 0; i < oImg.length; i++) {
+            if (oImg[i].offsetTop < sT + cH) {
+                oImg[i].src = oImg[i].getAttribute('_src')
+            }
+        }
+    }
+    window.onresize=window.onscroll = function () {
+        let now = Date.now();
+        if (now - t < 100) {
+            return;
+        }
+        t = now
+        render()
+    }
+    render()
+
+
+
+</script>

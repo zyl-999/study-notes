@@ -1,0 +1,19 @@
+<head>
+
+</head>
+
+<body onclick="evt();evt2();evt3();">
+    <script>
+        function evt(ev) {
+            let eb = event
+            alert('left:' + eb.clientX + ',top:' + eb.clientY)
+        }
+        // 第二种方式：
+        document.body.onclick = evt
+        // 第三种方式
+        document.body.addEventListener('click', evt, false)
+        //  document.body.addEventListener('click', evt2, false)
+        document.body.removeEventListener('click',evt)
+        
+    </script>
+</body>
