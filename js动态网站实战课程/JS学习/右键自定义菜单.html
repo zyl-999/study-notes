@@ -1,0 +1,41 @@
+<head>
+    <style>
+        div .item {
+            border: 2px solid red;
+            width: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div class="item">百度</div>
+        <div class="item">搜狐</div>
+        <div class="item">刷新</div>
+    </div>
+
+    <script>
+        let oUl = document.getElementsByClassName('item')
+        //目前只有 Firefox 浏览器支持 contextmenu 属性。
+            document.oncontextmenu = function (ev) {
+                let oevent = ev || event;
+                oUl.style.left = oevent.clientX + 'px';
+                oUl.style.top = oevent.clientY + 'px';
+                return false;
+
+            };
+            let aLi = oUl.children;
+            aLi[0].onclick = function () {
+                window.open('http://www.baidu.com')
+            };
+            aLi[1].onclick = function () {
+                window.open('http://www.souhu.com')
+            };
+            aLi[2].onclick = function () {
+                window.location.reload();
+            }
+      
+
+    </script>
+</body>
