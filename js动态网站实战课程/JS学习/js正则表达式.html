@@ -1,0 +1,81 @@
+<head>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id="demo">点击按钮后出现的内容</p>
+        <input type="button" value="按钮" onclick="myFunction()">
+        <!-- ======================================= 正则表达式模式================================================== -->
+        <!-- 
+        1.方括号代表某个范围内的字符：
+         [abc]  ：代表 a或b或c。        
+         [0-9]： 代表从 0 至 9 的数字  
+         [^abc]   除了abc,其他字符都可以
+         (com|cn|net)  代表com 或cn 或 net 
+         2.元字符是拥有特殊含义的字符：
+         \d: 数字     
+         \D   除了数字，其他字符都可以
+         \s: 空白字符  
+         \S  除了空白字符，其他字符都可以
+         \w: 代表数字字母下划线   
+         \W  除了数字字母下划线，其他字符都可以
+
+         /^abc/   表示开头是abc
+         /abc$/   表示结尾是abc
+         /^abc$/  表示只能是abc
+         
+
+
+         3.量词：
+         n+  匹配任何包含至少一个 n 的字符串。
+         n*  匹配任何包含零个或多个 n 的字符串。
+         n?  匹配任何包含零个或一个 n 的字符串。
+         n{5}   5个n
+         n{5,}  至少5个n        
+         n      1个n
+
+        
+        -->
+        <!-- ========================================== 正则表达式方法 ============================================ -->
+        <!--
+            test() 方法是一个正则表达式方法。
+            test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。
+         -->
+        <!-- 
+             exec() 方法是一个正则表达式方法。
+            exec() 方法用于检索字符串中的正则表达式的匹配。
+            该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。
+          -->
+
+    </div>
+    <script>
+        //  正则表达式修饰符：i,g,m可以在全局搜索中不区分大小写。i执行对大小写不敏感的匹配，g执行全局匹配，m执行多行匹配
+        // search() 方法使用正则表达式，search() 方法 用于检索字符串中指定的子字符串，
+        // 或检索与正则表达式相匹配的子字符串，并返回子串的起始位置。
+        // replace() 方法 用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+        let oC = document.getElementById('demo')
+        let str = "how are you today"
+        // function myFunction() {           
+        //     let ne = str.search(/Are/i)
+        //     oC.innerHTML = ne
+        // };
+        function myFunction() {
+            let ne = str.replace("today", "yesterday")
+            oC.innerHTML = ne
+        };
+
+        let nen = /are/;//new RegExp("are");
+        document.write(nen.test("how are you today"));//返回ture
+        let patt1 = new RegExp("free");
+        document.write(patt1.exec("The best things in life are free"));//返回一个数组，free
+
+
+
+
+
+
+    </script>
+</body>

@@ -1,0 +1,65 @@
+<div></div>
+<script>
+    // 除了基本类型number(包括NaN) boolean string function undefined 其他的都是object类型，比如数组，new创建的Boolean，String，Number
+    // 任何对象 用typeof都是object，
+    // 要判断是哪种类型的对象，用 instanceof
+    // object类型转字符串，调用了toString方法。
+
+
+    let key = 'boyfriend'
+    let key2 = 'name'
+    function fn(){
+        return key+'-fn'
+    }
+    let obj = {
+        abc: 'this is abc propty', // 基本类型
+        fn: function () {  // 函数 3种写法
+            return 'this is boj.fn'
+        },
+        fn2: () => {
+
+        },
+        method() {
+            return 'this is obj.fn too'
+        },
+        '[12*^4b]': '很特殊的属性名',  // 非正常的属性名
+        [fn()]: 'zhouweicheng',  // 以变量的值 为 属性名
+        [key2]: 'zhaoyanling'
+    }
+    let k = 'abc'
+    obj.newP = 'new p'
+    obj['***'] = ()=>{
+        console.log(' print * !')
+    }
+    console.log(obj)
+    // console.log(obj['abc'], '\n', obj.abc) // 这个完全一样
+    // console.log(obj.boyfriend3, obj[key], obj[key2])
+
+    // function getV(o, key) {
+    //     // 如果是
+    //     console.log(o[key])
+    // }
+
+    // let obj2 = {
+    //     ll: 'll is ll'
+    // }
+    // getV(obj, 'fn')
+    // getV(obj, '[12*^4b]')
+    // getV(obj2, 'll')
+    // // 多想想 数组！
+
+
+    // // toString:
+    // let obj3 = {}
+    // // 重写了toString方法
+    // let obj4 = { toString() { return 'this is obj4' } } 
+
+    // console.log(obj3+'')
+    // console.log(obj4+'')
+    // console.log(['1','2','3'])
+
+
+
+
+
+</script>

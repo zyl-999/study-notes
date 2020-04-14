@@ -1,0 +1,154 @@
+<html>
+
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        .header {
+            width: 100%;
+            height: 40px;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding: 10px;
+            color: red;
+            font-weight: bold;
+        }
+
+        .navigation {
+            height: 30px;
+            overflow: hidden;
+            background-color: rgb(107, 107, 194);
+        }
+
+        .navigation a {
+
+            text-decoration: none;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .navigation a:hover {
+            background-color: rgb(23, 206, 54);
+            color: brown;
+        }
+
+        /* 创建三个不等的列 */
+        .contentmiddle {
+            float: left;
+            width: 60%;
+            padding: 10px;
+        }
+
+        .sideleft {
+            float: left;
+            width: 15%;
+            padding: 10px;
+        }
+
+        .sideright {
+            float: left;
+            width: 20%;
+            padding: 10px;
+        }
+
+        /* 列后清除浮动 */
+        .row::after {
+            content: " ";
+            display: table;
+            clear: both;
+
+        }
+
+        /* 响应式布局 - 小于 600 px 时改为上下布局 */
+        @media screen and (max-width: 600px) {
+
+            .contentmiddle,
+            .navigation,
+            .sideleft,
+            .sideright {
+                width: 100%;
+            }
+
+        }
+
+        .foot {
+            background-color: burlywood;
+            text-align: center;
+            padding: 10px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        百度
+    </div>
+
+    <div class="navigation">
+        <a target="blank" href="http://news.baidu.com/">首页</a>
+        <a target="blank" href="http://news.baidu.com/guonei">国内</a>
+        <a target="blank" href="http://news.baidu.com/guoji">国际</a>
+        <a target="blank" href="http://news.baidu.com/mil">军事</a>
+        <a target="blank" href="http://news.baidu.com/finance">财经</a>
+        <a target="blank" href="http://news.baidu.com/ent">娱乐</a>
+        <a target="blank" href="http://news.baidu.com/sports">体育</a>
+        <a target="blank" href="http://news.baidu.com/game">游戏</a>
+
+    </div>
+
+    <div class="row">
+        <div class="sideleft">
+            <h3>左侧栏</h3>
+            <p>这是第二列的文字内容，这是第二列的文字内容，这是第二列的文字内容，
+                这是第二列的文字内容，这是第二列的文字内容，这是第二列的文字内容</p>
+        </div>
+        <div class="contentmiddle">
+            <h3>中间区域内容</h3>
+            <p>这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容，
+                这是第中间列的文字内容，这是第中间列的文字内容，这是第中间列的文字内容
+            </p>
+        </div>
+        <div class="sideright">
+            <h3>右侧栏</h3>
+            <p>这是第三列的文字内容，这是第三列的文字内容，这是第三列的文字内容，
+                这是第三列的文字内容，这是第三列的文字内容，这是第三列的文字内容</p>
+        </div>
+
+    </div>
+    <div class="foot">
+        <p> 底部区域</p>
+    </div>
+</body>
+
+</html>

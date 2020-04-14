@@ -1,0 +1,36 @@
+<head>
+    <style>
+        .hovr {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hovrcontent {
+            min-width: 160px;
+            min-height: 120px;            
+            background: rgb(128, 180, 154);
+            display: none;
+            position: absolute;
+            box-shadow:0px 0px 10px 10px red inset;
+            padding: 25px;
+        }
+        .hovr:hover .hovrcontent{
+            display: block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h3>鼠标移动后出现下拉菜单</h3>
+    <div class="hovr">
+        <span>鼠标移到我这!</span>
+        <div class="hovrcontent">
+            <p>菜鸟教程</p>
+            <p>https://www.runoob.com</p>
+        </div>
+
+    </div>
+
+
+</body>

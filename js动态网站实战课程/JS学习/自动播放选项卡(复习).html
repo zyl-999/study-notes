@@ -35,35 +35,29 @@
             oP[i].onclick = function () {
                 for (let i = 0; i < oP.length; i++) {
                     oP[i].className = ''
-                    // oP[i].style.backgroundColor = ''
                     oDiv[i].style.display = 'none'
                 }
                 oP[i].className = 'on'
-                // oP[i].style.backgroundColor = 'salmon'
                 oDiv[i].style.display = 'block'
             }
         }
         function show() {
             for (let i = 0; i < oP.length; i++) {
-                oP[i].className = ''
-                // oP[i].style.backgroundColor = ''
-                oDiv[i].style.display = 'none'
+                oP[i].className = '';               
+                oDiv[i].style.display = 'none';
             }
-            oP[inow].className = 'on'
-            // oP[inow].style.backgroundColor = 'salmon'
-            oDiv[inow].style.display = 'block'
-
+            oP[inow].className = 'on';           
+            oDiv[inow].style.display = 'block';
             inow++;
             if (inow == oP.length) { inow = 0 }
         }
         clearInterval(timer);
-        timer = setInterval(show, 1000);
+        timer = setInterval(show, 2000);
         oBtn.onmouseover = function () {
             clearInterval(timer)
-        };     
+        };
         oBtn.onmouseout = function () {
-            timer = setInterval(show, 1000);
-            
+            timer = setInterval(show, 2000);
         };
     </script>
 

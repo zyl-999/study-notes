@@ -1,0 +1,66 @@
+<style>
+    .item {
+        width: 400px;
+        height: 220px;
+        margin: 50px 0;
+        border: 1px solid red;
+        outline: 7px solid greenyellow;
+        transition: all 2s linear;
+        transform-origin: left top;
+        zoom: 1;
+        letter-spacing: 2px;
+
+
+        font-size: 20px;
+        font-weight: bold;
+        background-color: cornflowerblue;
+        color: white;
+        /* 立体字 */
+        text-shadow:
+            0px 1px 0px #c0c0c0,
+            0px 2px 0px #b0b0b0,
+            0px 3px 0px #a0a0a0,
+            0px 4px 0px #909090,
+            0px 5px 10px rgba(0, 0, 0, 0.6);
+
+            /* 空心字 */
+        /* text-shadow: 0 1px 0 black, 0 -1px 0 black, 1px 0 0 black, -1px 0 0 black
+        ,1px 1px 0 black,-1px -1px 0 black,1px -1px 0 black,-1px 1px 0 black; */
+        /* text-shadow: 0 0 2px black,0 0 2px black,0 0 2px black; */
+    }
+
+    .scale:hover {
+        transform: scale(1.5);
+        /* 真正的 准确的缩放 */
+        /* 不会引起页面重新布局 */
+    }
+
+    .zoom:hover {
+        zoom: 1.5;
+        /* 模拟的缩放，不会突破浏览器的限制条件，比如字体大小，1px等 */
+        /* 会引起页面重新布局 */
+    }
+
+    .zhou {
+        text-shadow: 10px 10px 0px 15px red;
+    }
+</style>
+
+
+
+<div class="item">
+    <img src="../图片/_src='img12'.jpg" width="220" height="160">
+    <p class="zhou">你好 周维成是个大坏蛋！</p>
+</div>
+<div class="item scale">
+    <img src="../图片/_src='img12'.jpg" width="220" height="160">
+    <p>你好 周维成是个大坏蛋！</p>
+</div>
+<div class="item zoom">
+    <img src="../图片/_src='img12'.jpg" width="220" height="160">
+    <p>你好 周维成是个大坏蛋！</p>
+</div>
+<div class="item zoom">
+    <img src="../图片/_src='img12'.jpg" width="220" height="160">
+    <p>你好周维成是个大坏蛋！</p>
+</div>

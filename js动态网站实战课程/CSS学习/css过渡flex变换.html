@@ -1,0 +1,68 @@
+<head>
+    <style>
+        .wrapper {
+            border: 1px solid blue;
+            height: 87vh;
+            width: 67vw;
+            display: flex;
+            /* align-items: center; */
+            align-items: flex-start;
+            justify-content: flex-start;
+            /* justify-content: flex-end; */
+            /* justify-content: space-between; */
+            justify-content: space-around;
+            /* flex-direction: column-reverse; */
+            /* flex-wrap: wrap; */
+            flex-flow: row nowrap;
+            /* flex-flow是flex-direction和flex-wrap的综合写法 */
+        }
+        .item {
+            border: 1px solid red;
+            height: 40px;
+            width: 60px;
+            margin: 2px;
+            text-align: center;
+            line-height: 1.5em;
+            /* 定义 容器空间不够时，里面的items的缩小比例 */
+            /* flex-shrink: 100;   
+            flex-grow: 2; */
+            /* flex-basis: 100px; */
+            /* flex-basis,flex-grow,flex-shrink */
+            /* flex: 60px 1 1;  */
+     }
+        .item::before {
+            content: '';
+            display: block;
+            height: calc(50% - .75em);
+        }
+        .tras {
+            /* transition: all 2s linear; */
+            transform-origin: left top;
+        }                  
+        .tras:hover {
+            /* width: 200px; */
+            /* border-width: 10px; */
+            color: rgb(125, 231, 125);
+            /* font-size: 26px; */
+            /* opacity: 0; */            
+            transform: translate(100px, 100px) scale(2) rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item">1
+        </div>
+        <div class="item" style="height: 100px; order: 99;">2
+        </div>
+        <div class="item" style="height: 120px;width: 300px; order: 22; ">3
+        </div>
+        <div class="item" style="height: 30px; order: 1;">4
+        </div>
+        <div class="item">5
+        </div>
+        <div class="item" style="height: 90; order: -7;">6
+        </div>
+        <div class="item tras">7
+        </div>
+</body>

@@ -1,0 +1,33 @@
+<head>
+    <style>
+        body {
+            counter-reset: section;
+        }
+        h2{
+            counter-reset: subsection;
+        }
+        h2::before{
+            counter-increment: section;
+            content: "section" counter(section)".";
+        }
+        h3::before{
+            counter-increment: subsection;
+            content: counter(section)"." counter(subsection)" ";
+        }
+    </style>
+</head>
+
+<body>
+    <h2>HTML教程</h2>
+    <h3>html</h3>
+    <h3>css</h3>
+
+    <h2>Scripting教程</h2>
+    <h3>JavaScript</h3>
+    <h3>VBScript</h3>
+
+    <h2>XML教程</h2>
+    <h3>XML</h3>
+    <h3>XSL</h3>
+
+</body>

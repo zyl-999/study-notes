@@ -1,0 +1,46 @@
+<head>
+    <style>
+        .parent1,
+        .parent2,
+        .parent3 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            box-shadow: 0px 0px 13px 10px brown inset;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .parent1 {
+            text-align: center;
+            line-height: 200px;
+        }        
+        .parent2 {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .parent3 {
+            position: relative;
+        }
+        .parent3>div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent1">
+        line-height
+    </div>
+    <div class="parent2">
+        <div>flex</div>
+    </div>
+    <div class="parent3">
+        <div>position+transform</div>
+    </div>
+
+
+</body>

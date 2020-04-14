@@ -1,0 +1,151 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .header {
+            height: 40px;
+            text-align: center;
+            background-color: gainsboro;
+            padding: 10px;
+        }
+
+        .navigation {
+            height: 30px;
+            background-color: cornflowerblue;                       
+            /* overflow: hidden; */
+        }
+        .content{
+            /* overflow: hidden; */
+        }
+        .footer {
+            padding: 20px;            
+            text-align: center;            
+            margin-top: 20px;
+            background-color: thistle;
+        }
+
+        .navigation a {
+            font-size: 17px;
+            color: white;
+            text-decoration: none;
+            padding: 4px;
+            display: inline-block;
+            margin: 0px;
+        }
+
+        .navigation a:hover {
+            background-color: red;
+            color: blue;
+        }
+        
+
+        .left {
+            float: left;
+            width: 40%;
+            padding: 10px;
+        }
+
+        .picture {
+            padding: 10px;
+            background-color: thistle;
+
+        }
+
+        .picture1 {
+            
+            width: 280px;
+            height: 200px;
+            /* padding-left: 10px; */
+        }
+
+        .right {
+            float: left;
+            width: 50%;
+            background-color: rgb(163, 151, 151);
+            padding-top: 10px;
+            margin-top: 30px;
+        }
+
+        .text {
+            line-height: 30px;
+            text-indent: 20px;
+            /* padding-left: 10px; */
+        }
+        
+
+        
+
+        @media screen and(max-width: 800px) {
+            .right {
+                width: 100%;
+            }
+        }
+
+        @media screen and(max-width: 800px) {
+            .left {
+                width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 400px) {
+            .navigation a {
+                float: none;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body style="height: 1000px;">
+    <div class="header">网页头部</div>
+    <div class="navigation">
+        <a target="blank" href="http://news.baidu.com/">首页</a>
+        <a target="blank" href="http://news.baidu.com/guonei">国内</a>
+        <a target="blank" href="http://news.baidu.com/guoji">国际</a>
+        <a target="blank" href="http://news.baidu.com/mil">军事</a>
+        <a target="blank" href="http://news.baidu.com/finance">财经</a>
+        <a target="blank" href="http://news.baidu.com/ent">娱乐</a>
+        <a target="blank" href="http://news.baidu.com/sports">体育</a>
+        <a target="blank" href="http://news.baidu.com/game">游戏</a>
+    </div>
+    <div class="content">
+        <div class="left">
+            <h3>文章标题1</h3>
+            <p>一些文本1...</p>
+            <div class="picture" style="height:300px;width: 100%;">图片</div>
+            <h3>文章标题2</h3>
+            <p>一些文本2...</p>
+            <div class="picture" style="height:300px;width: 100%;">图片</div>
+        </div>
+        <div class="right">
+            <div>
+                <h2>热点</h2>
+                <div class="text">这是热点的下的文章这是热点的下的文章这是热点的下的文章这是热点的下的文章
+                    这是热点的下的文章这是热点的下的文章这是热点的下的文章这是热点的下的文章
+                    这是热点的下的文章这是热点的下的文章这是热点的下的文章这是热点的下的文章
+                </div>
+                <img class="picture1" src="../图片/_src='img12'.jpg" alt="">
+                <img class="picture1" src="../图片/_src='img9'.jpg" alt="">
+                <img class="picture1" src="../图片/_src='img4'.jpg" alt="">
+            </div>
+            <div>
+                <h2>要闻</h2>
+                <div class="text">这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章
+                    这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章
+                    这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章这是要闻的下的文章
+                </div>
+                <img class="picture1" src="../图片/_src='img10'.jpg" alt="">
+                <img class="picture1" src="../图片/_src='img13'.jpg" alt="">
+                <img class="picture1" src="../图片/_src='img6'.jpg" alt="">
+            </div>
+        </div>
+
+    </div>
+    <div style="clear: both;"></div>
+    <div class="footer">
+        <h2>网页底部</h2>
+    </div>
+
+</body>

@@ -1,0 +1,48 @@
+<head>
+    <style>
+        @keyframes changeFn {
+            0% ,100% {
+                /* transform: scale(2); */
+                zoom:1;
+            }
+            60% {
+                opacity: 0;
+                /* transform: scale(1); */
+                zoom:10;
+            }
+        }
+        .wrap {
+            width: 120px;
+            margin: 100px;
+            transform-origin: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+           
+        }
+        .ball {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: black;
+            animation: changeFn 2s linear infinite;
+            /* animation-iteration-count: infinite; */
+        }        
+    </style>
+</head>
+<body class="bdy">
+    <div class="wrap">
+        <div class="ball" style="animation-delay: -1.5s;"></div>
+        <div class="ball" style="animation-delay: -1s;"></div>
+        <div class="ball" style="animation-delay: -.5s;"></div>
+        <div class="ball"></div>
+        
+        
+    </div>
+</body>
+<script>
+
+
+
+
+</script>

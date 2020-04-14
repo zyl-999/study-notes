@@ -1,0 +1,119 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            outline: 1px solid red;
+            position: relative;
+        }
+
+        .in {
+            background: blue;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+    </div>
+
+</body>
+<script>
+    // 1 定义基本信息
+    const col = 30;
+    const row = 20;
+    const side = 10;
+    const box = document.getElementsByClassName("box")[0]
+    box.style.height = row * side + "px";
+    box.style.width = col * side + "px";
+
+    const arr = []
+    for (let i = 0; i < row; i++) {
+        arr[i] = []
+        for (let j = 0; j < col; j++) {
+            arr[i][j] = ''
+        }
+    }
+
+    function dataTrans() {
+        //头部移动
+        switch (arr[headSite.y][headSite.x]) {
+            case 'U':// 行数-1
+                headSite.y--;
+                arr[headSite.y][headSite.x] = 'U'
+                break;
+            case 'D':// +1
+                headSite.y++;
+                arr[headSite.y][headSite.x] = 'D'
+
+                break;
+            case 'L': // 列数-1
+                headSite.x--;
+                arr[headSite.y][headSite.x] = 'L'
+                break;
+            case 'R': // +1
+                headSite.x++;
+                arr[headSite.y][headSite.x] = 'R'
+        }
+        // 尾部移动
+        let bufY = tailSite.y
+        let bufX = tailSite.x
+        switch (arr[tailSite.y][tailSite.x]) {
+
+            case 'U':// 行数-1
+                tailSite.y--;
+                break;
+            case 'D':// +1
+                tailSite.y++;
+                break;
+            case 'L': // 列数-1
+                tailSite.x--;
+                break;
+            case 'R': // +1
+                tailSite.x++;
+        }
+        arr[bufY][bufX] = ''
+
+    }
+    function draw() {
+        box.innerHTML = ''
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (/^[ULDR]$/.test(arr[i][j])) {
+                    let d = document.createElement("div")
+                    d.className = "in"
+                    d.style.left = j * side + 'px'
+                    d.style.top = i * side + 'px'
+                    box.appendChild(d)
+                }
+            }
+        }
+    }
+
+    // 初始化，蛇的信息： 'U', 'L', 'D', 'R', ''
+    // arr[17][29] = 'L'
+    // arr[18][29] = 'U'
+    // arr[19][29] = 'U'
+    // let headSite = { y: 17, x: 29 }
+    // let tailSite = { y: 19, x: 29 }    
+
+    arr[0][0] = 'D'
+    arr[1][0] = 'D'
+    arr[2][0] = 'R'
+    let headSite = { y: 2, x: 0 }
+    let tailSite = { y: 0, x: 0 }
+    draw()
+    // 
+    setInterval(() => {
+        dataTrans()
+        draw()
+    }, 500);
+
+</script>

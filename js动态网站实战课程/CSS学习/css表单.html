@@ -1,0 +1,59 @@
+<head>
+    <style>
+        input[type=text],
+        select {
+            padding: 10px 10px;
+            margin: 8px 0px;
+            width: 100%;
+            border-radius: 6px;
+            border: thistle 1px solid;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            background-color: rgb(121, 189, 121);
+            width: 100%;
+            border-radius: 6px;
+            border: none;
+            padding: 10px 10px;
+            margin: 8px 0px;
+            color: white;
+            cursor: pointer;
+            /* cursor(光标): pointer（小手） */
+        }
+
+        input[type=submit]:hover {
+            background-color: rgb(61, 179, 61);
+        }
+
+        div {
+            background-color: #f3f3f3;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <form action="">
+            <label for="iname">姓名</label>
+            <input type="text" id='iname' name="xingming" placeholder="请输入姓名">
+
+            <label for="isex">性别</label>
+            <input type="text" id='isex' name="xingbie" placeholder="请输入性别">
+
+            <label for="ihome">请输入省份</label>
+            <select name="ihome" id="ihome">
+                <option value="guangdong">广东</option>
+                <option value="henan">河南</option>
+                <option value="beijing">北京</option>
+                <option value="hunan">湖南</option>
+                <option value="hubei">湖北</option>
+            </select>
+            <input type="submit" value="提交">
+        </form>
+    </div>
+</body>

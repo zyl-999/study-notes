@@ -7,25 +7,25 @@
         //--------------------------------------------------------// 
         //1.学习：push pop shift unshift splice indexOf
         let arr = [12, 33, 55, 32]
-        arr.shift();
-        arr.unshift(1);
-        arr.pop();
-        arr.push(3);
+        // arr.shift();
+        // arr.unshift(1);
+        // arr.pop();
+        // arr.push(3);
         arr.splice(0, 2);       //在下标为0的位置开始减2个数
-        arr.splice(2, 3, 3, 4, 5);   //在下标为2的位置开始增加3个数:3,4,5    
-        // console.log(arr);
-        arr.indexOf(55);
+        arr.splice(2, 3, 3, 4, 5,6);   //在下标为2的位置开始减少3个数，再加上:3,4,5，6    
+        console.log(arr);
+        // arr.indexOf(55);
         // console.log(arr.indexOf(55)) //打印出55的下标
         //--------------------------------------------------------//  
         //2.学习filter
-        let arr1 = [1, 2, 3, 4, 5, 6, 7];
-        function num(age) {
-            return age > 3;
-        }
-        function you() {
-            document.getElementById('hello').innerHTML = arr1.filter(num)
-        }
-        you();
+        // let arr1 = [1, 2, 3, 4, 5, 6, 7];
+        // function num(age) {
+        //     return age > 3;
+        // }
+        // function you() {
+        //     document.getElementById('hello').innerHTML = arr1.filter(num)
+        // }
+        // you();
 
         //--------------------------------------------------------//   
         //3.学习map
@@ -35,7 +35,7 @@
               x=document.getElementById('world')
               x.innerHTML=numbers.map(Math.sqrt)
         }
-        myfun(); 
+        // myfun(); 
 
         //--------------------------------------------------------//   
         //4.学习forEach
@@ -47,7 +47,7 @@
            demoP.innerHTML=demoP.innerHTML+'index['+index+']:'+item+'<br>'
                               
         }
-        numb.forEach(myfunction);
+        // numb.forEach(myfunction);       
 
     </script>
 

@@ -1,0 +1,25 @@
+<head>
+    <style>
+        /* 匹配div的第一个 <p> 元素 */
+        div>p:first-child {
+            background-color: tomato;
+        }
+
+        /* 匹配所有<p> 元素中的第一个 <i> 元素 */
+        div>p>i:first-child {
+            background: yellowgreen;
+        }
+
+        /* 匹配所有作为第一个子元素的 <p> 元素中的所有 <i> 元素 */
+       
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <p>this is <i>some</i> text.this is <i>some</i> text</p>
+        <p>this is <i>some</i> text.this is <i>some</i> text</p>
+
+    </div>
+</body>

@@ -1,0 +1,48 @@
+<head>
+
+</head>
+
+<body>
+    <div id="e"></div>
+</body>
+<script>
+    // let  htmlStr=`
+    // <ul style="list-style-type:none">
+    //     <li>nihao</li>
+    //     <li>nihao</li>
+    //     <li>nihao</li>
+    //     <li>nihao</li>
+    // </ul>
+    // `
+
+    let ul2 = document.createElement('ul')
+    ul2.style.listStyleType = 'none';
+    let div = document.getElementById("e")
+    div.appendChild(ul2);
+
+
+    function liShow(ul, text) {
+        if (!ul||!ul.appendChild) {
+            console.warn('ul is undefined or invalid',ul)
+            return;
+        }
+
+        let li = document.createElement('li')
+        li.innerText = text;
+        ul.appendChild(li);
+
+    };
+    liShow(ul2, "1")
+    liShow(ul2, "2")
+    liShow(ul2, "3")
+    liShow(ul2, "4")
+    liShow(ul2, "5")
+    liShow(ul2, "6")
+
+
+
+
+
+
+
+</script>

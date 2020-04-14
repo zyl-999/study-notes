@@ -1,0 +1,144 @@
+<head>
+    <style>
+        .father {
+            display: flex;
+            /* flex-direction:row; */
+            align-items: center;
+            justify-content: flex-start;
+
+            border: 1px solid greenyellow;
+            
+
+        }
+
+        .circle {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 16px;
+        }
+
+        .circle.primary {
+            border: 1px solid blue;
+            color: blue;
+        }
+
+        .circle.active {
+            border: 1px solid blue;
+            background-color: blue;
+            color: white;
+        }
+
+        .line {
+            height: 1em;
+            width: 22px;
+            border-top: 1px solid blue;
+            margin: 0 2px;
+
+        }
+
+        .circle.gray {
+            border: 1px solid gray;
+            color: gray;
+
+        }
+
+        .line.gray {
+            border-color: gray;
+        }
+
+        .item {
+            font-size: smaller;
+            text-align: center;
+            width: 2em;
+        }
+
+        .item>.circle {
+            margin: 0 auto;
+        }
+
+        .test{
+            width: 400px;
+            height: 300px;
+            box-sizing: border-box;
+            outline: 1px solid blue;
+            padding: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="border: 1px solid red; height: 100px;padding: 10px;">
+        <div class="father">
+            <div class="item">
+                <div class="circle primary">✔</div>
+                <div>编辑</div>
+            </div>
+            <div class="line"></div>
+            <div class="item">
+                <div class="circle primary">✔</div>
+                <div>一审</div>
+            </div>
+            <div class="line"></div>
+            <div class="item">
+                <div class="circle primary">✔</div>
+                <div>二审</div>
+            </div>
+            <div class="line"></div>
+            <div class="item">
+                <div class="circle primary">✔</div>
+                <div>三审</div>
+            </div>
+            <div class="line"></div>
+            <div class="item">
+                <div class="circle active">5</div>
+                <div>配图</div>
+            </div>
+            <div class="line gray"></div>
+            <div class="item">
+                <div class="circle gray">6</div>
+                <div>配音</div>
+            </div>
+            <div class="line gray"></div>
+            <div class="item">
+                <div class="circle gray">7</div>
+                <div>系统</div>
+            </div>
+            <div class="line gray"></div>
+            <div class="item">
+                <div class="circle gray">8</div>
+                <div>翻译</div>
+            </div>
+            <div class="line gray"></div>
+            <div class="item">
+                <div class="circle gray">9</div>
+                <div>六审</div>
+            </div>
+            <div class="line gray"></div>
+            <div class="item">
+                <div class="circle gray">10</div>
+                <div>完成</div>
+            </div>
+            <div class="next">
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="test">
+        
+    </div>
+
+</body>

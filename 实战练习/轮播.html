@@ -1,0 +1,92 @@
+<head>
+    <style>
+        .father {
+            /* display: flex;
+            align-items: flex-start;
+            justify-content: flex-start; */
+            width: 520px;
+            height: 280px;
+            overflow: hidden;
+            border: 1px solid red;
+            margin: 50px 0 0 400px;
+            position: relative;
+
+        }
+
+        .father .poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 520px;
+            height: 280px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <img class="poster" src="./轮播1.jpg" alt="">
+        <img class="poster" src="./轮播2.jpg" alt="">
+        <img class="poster" src="./轮播3.jpg" alt="">
+        <img class="poster" src="./轮播4.jpg" alt="">
+        <img class="poster" src="./轮播5.jpg" alt="">
+
+    </div>
+
+</body>
+<script>
+    const posters = document.querySelectorAll(".father .poster");
+    const width = 520;
+    for (let i = 0; i < posters.length; i++) {
+        posters[i].style.left = width * i + "px";
+    }
+
+    let speed = 16;
+    let isMoving = false;
+    function move(totalDis) {
+        if (isMoving) {
+            return
+        }
+        const posters = document.querySelectorAll('.father .poster')
+        const first = posters[0];
+        const last = posters[posters.length-1]
+        let firstLeft = parseInt(first.style.left)
+        if (firstLeft === 0 && totalDis > 0) {
+            last.parentElement.removeChild(last)
+            first.parentElement.insertBefore(last,first)
+            last.style.left = -width + 'px'
+           
+        }
+        let lastLeft = parseInt(last.style.left)
+        if (lastLeft === 0 && totalDis < 0) {
+            last.parentElement.removeChild(first)
+            last.parentElement.appendChild(first)
+            first.style.left = width + 'px'
+        };
+        let arr = [];
+        for (let i = 0; i < posters.length; i++) {
+            arr[i] = parseInt(posters[i].style.left)
+        }
+        isMoving = true;
+        const disPerStep = Math.round(totalDis / 20); // 20步运动width
+        let dis = 0;
+        let timer = setInterval(function () {
+            dis += disPerStep;
+            if (Math.abs(dis) >= Math.abs(totalDis)) {
+                clearInterval(timer)
+                dis = totalDis
+                isMoving = false;
+            }
+            for (let i = 0; i < posters.length; i++) {
+                posters[i].style.left = arr[i] + dis + "px"
+            }
+
+        }, speed)
+
+    };
+    setInterval(function () {
+        move(-width)
+    }, 2000)
+
+
+</script>

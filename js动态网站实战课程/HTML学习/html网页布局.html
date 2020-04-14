@@ -7,61 +7,50 @@
             margin: 0;
             box-sizing: border-box;
         }
-
         div {
             display: inline-block;
         }
-
         .strong-msg {
             color: cornflowerblue;
             font-size: large;
             line-height: 1.8em;
         }
-
         .left {
             width: 600px;
         }
-
         .right {
-            width: 150px;            
-           padding-top: 10px;
+            width: 150px;
+            padding-top: 10px;
         }
-        .right img{
+        .right img {
             width: 150px;
             height: 122px;
-            
-        }        
-        .right .rtext{
-            
+        }
+        .right .rtext {
+
             left: 35px;
             font-size: 14px;
             margin: 0px;
             padding-left: 30px;
         }
-
         .content {
-            height: 300px; 
-            margin-top:10px ;       
+            height: 300px;
+            margin-top: 10px;
         }
-
         .content #div11,
         .content #div12 {
             width: 49%;
             height: 100%;
             vertical-align: middle;
         }
-
         #div12 {
             padding-left: 5px;
         }
-
         #div11 img {
             width: 100%;
-            height: 248px;
+            height: 288px;
             padding-left: 8px;
-            
         }
-
         .msg {
             /* 不让文字换行 */
             white-space: nowrap;
@@ -72,31 +61,30 @@
             font-size: 15px;
             font-family: '宋体';
         }
-
         .circle {
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: gray;
         }
-
         .ccc {
+            display: block;
             background: #000000;
             width: 97.5%;
             height: 30px;
             margin-left: 8px;
+            margin-top: -35px;
+            border: 1px solid red;
         }
-
         .ccc>div:first-child {
             width: 78%;
             font-size: small;
             white-space: nowrap;
             color: white;
-
         }
         .ccc>div:last-child {
             width: 20%;
-        }  
+        }
         .btm img {
             width: 145px;
             height: 100px;
@@ -104,6 +92,7 @@
             margin-top: 5px;
         }
         .btm .btmtext {
+            display: block;
             width: 145px;
             padding-left: 6px;
             font-size: small;
@@ -115,7 +104,8 @@
     <div class="box">
         <div class="left">
             <div class="content">
-                <div id="div11"><img src="./图片/_src='img10'.jpg" alt="picture">
+                <div id="div11">
+                    <img src="../图片/_src='img10'.jpg" alt="picture">
                     <div class="ccc">
                         <div>英国首相确诊后，这些人检测呈阳性</div>
                         <div>
@@ -127,7 +117,7 @@
                     </div>
                 </div>
                 <div id="div12">
-    
+
                     <div class="strong-msg">钟南山：国内疫情不会第二波高峰</div>
                     <div class="msg">马伊琍被问离开文章会再婚吗？回答一片哗然</div>
                     <div class="msg">这些人不能吃笋？吃笋引发大出血</div>
@@ -139,29 +129,45 @@
                     <div class="msg">还要戴口罩吗？张文宏：这些人和场所要戴口罩</div>
                     <div class="msg">英国首相确诊后，这些人检测呈阳性</div>
                     <div class="msg">她把初恋给了周维成，明年结婚</div>
-    
+
                 </div>
             </div>
             <div class="btm">
-                <span><img src="./图片/_src='img2'.jpg" alt=""></span>
-                <span><img src="./图片/_src='img3'.jpg" alt=""></span>
-                <span><img src="./图片/_src='img4'.jpg" alt=""></span>
-                <span><img src="./图片/_src='img5'.jpg" alt=""></span>
-                <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
-                <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
-                <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
-                <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
-    
+                <div>
+                    <img src="../图片/_src='img2'.jpg" alt="">
+                    <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
+                </div>
+                <div>
+                    <img src="../图片/_src='img3'.jpg" alt="">
+                    <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
+                </div>
+                <div>
+                    <img src="../图片/_src='img4'.jpg" alt="">
+                    <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
+                </div>
+                <div>
+                    <img src="../图片/_src='img5'.jpg" alt="">
+                    <div class='btmtext'>美丽湖边美景，享受恬静悠闲的退休生活</div>
+                </div>
             </div>
         </div>
-    
+
         <div class="right">
-            <div><img src="./图片/_src='img6'.jpg" alt=""></div>
-            <div class="rtext">办公室出租</div>
-            <div><img src="./图片/_src='img7'.jpg" alt=""></div>
-            <div class="rtext">水浒传游戏机</div>
-            <div><img src="./图片/_src='img8'.jpg" alt=""></div>
-            <div class="rtext">水浒传游戏机</div>
+            <div>
+                <img src="../图片/_src='img6'.jpg" alt="">
+                <div class="rtext">办公室出租</div>
+            </div>
+
+            <div>
+                <img src="../图片/_src='img7'.jpg" alt="">
+                <div class="rtext">水浒传游戏机</div>
+            </div>
+
+            <div>
+                <img src="../图片/_src='img8'.jpg" alt="">
+                <div class="rtext">水浒传游戏机</div>
+            </div>
+
         </div>
     </div>
 

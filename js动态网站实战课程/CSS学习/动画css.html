@@ -1,0 +1,42 @@
+<head>
+    <style>
+        @keyframes moveCircle {
+            0%,100% {
+                left: 0;
+                top: 0;               
+            }
+            20%{
+                left: 0;
+                top: calc(100vh - 120px);
+            }
+            50%{
+                left: calc(100vw - 120px);
+                top: calc(100vh - 120px);
+            }
+            80%{
+                left:calc(100vw - 120px);
+                top:0
+            }            
+        }
+        .bdy{
+            position: relative;
+        }
+        .ball {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+            background-color: red;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px 10px salmon;       
+            
+            animation: 6s moveCircle linear infinite ;                                                                                                       ;
+            /* animation-iteration-count: infinite; */
+        }
+    </style>
+
+</head>
+
+<body class="bdy">
+    <div class="ball"></div>
+</body>

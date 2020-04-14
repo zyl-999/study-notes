@@ -1,0 +1,812 @@
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: 0;
+        }
+
+        .nav-1 {
+            background-color: #f5f5f5;
+            color: #3c3c3c;
+            font-size: small;
+            height: 36px;
+        }
+
+        .nav-2 {
+            background-color: #ee1f3b;
+            text-align: center;
+
+        }
+
+        .nav-2 img:hover {
+            cursor: pointer;
+        }
+
+        .nav-1-left,
+        .nav-1-right {
+            display: inline-block;
+            padding: 10px;
+
+        }
+
+        .nav-1-left {
+            padding-left: 150px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            color: #3c3c3c;
+            font-size: 12px;
+            font-family: "宋体";
+        }
+
+        .dropcontent {
+            display: none;
+            position: absolute;
+            line-height: 25px;
+
+        }
+
+        .dropdown:hover .dropcontent {
+            display: block;
+            min-width: 80px;
+            background-color: white;
+
+        }
+
+        .dropcontent .dh:hover {
+            cursor: pointer;
+            background-color: #c5b7b7;
+        }
+
+        .sp {
+            padding: 5px;
+            text-decoration: none;
+        }
+
+        .sp:hover {
+            color: rgb(245, 39, 39);
+            cursor: pointer;
+
+        }
+
+        .nav-3 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-left: 150px;
+            position: sticky;
+            top: 0;
+            background-color: white;
+
+        }
+
+        .nav-3-mid {
+            display: inline-block;
+            margin-top: 25px;
+            padding-left: 45px;
+        }
+
+        .mid-mid {
+            display: inline-flex;
+        }
+
+        .nav-3-mid .mid-left {
+            font-size: 45px;
+            color: rgb(221, 82, 57);
+            padding-left: 0px;
+
+        }
+
+        .mid-top .btn {
+            font-size: 14px;
+            color: red;
+            padding: 5PX;
+            background-color: white;
+        }
+
+        .mid-top .btn:hover {
+            background-color: coral;
+            cursor: pointer;
+        }
+
+        .nav-3-mid .mid-mid input {
+            border: 2px solid red;
+            border-radius: 20px 0px 0px 20px;
+            width: 650px;
+            /* height: 40px; */
+            padding-left: 20px;
+            padding-top: 5px;
+            outline: none;
+        }
+
+        .nav-3-mid .mid-mid button {
+            height: 42px;
+            width: 70px;
+            color: white;
+            background-color: rgb(226, 58, 28);
+            border-radius: 0px 20px 20px 0px;
+            margin-left: -8px;
+            outline: none;
+        }
+
+        .nav-3-mid .mid-text {
+            font-size: 12px;
+            padding-top: 5px;
+
+        }
+
+        .nav-3-mid span {
+            font-size: 12px;
+        }
+
+        .nav-3-mid img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .nav-4 {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            width: 1190px;
+            height: 30px;
+            margin-top: 10px;
+            color: white;
+            background-color: rgb(245, 87, 30);
+            box-shadow: 0 2px 2px 2px red inset;
+        }
+
+        .nav-4 a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-4 .nav-4first {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: red; */
+            /* padding: 0;margin: 0; */
+            width: 180px;
+        }
+
+        ._flex {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 100px;
+            float: right;
+            position: sticky;
+            top: 80px;
+            bottom: -40px;
+        }
+
+        .flex-text {
+            /* height: 50px; */
+            padding: 10px;
+            width: 60px;
+        }
+
+        .flex-text:hover {
+            background-color: orangered;
+            color: white;
+            cursor: pointer;
+        }
+
+        .main {
+            display: flex;
+            margin-left: 153px;
+        }
+
+        .main-l {
+            border: 1px solid red;
+        }
+
+        .main-l li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            list-style: none;
+            height: 32px;
+            width: 189px;
+            line-height: 30px;
+            font-family: "宋体";
+            letter-spacing: 3px;
+            font-size: 15px;
+            position: relative;            
+        }
+
+        .li-show {
+            position: absolute;
+            z-index: 9;
+            cursor: pointer;
+            left: 100%;
+            top: 0;
+            display: none;
+            height: 533px;
+            width: 720px;
+            border: 2px solid red;
+            background-color: #ee1f3b;
+
+        }
+
+        .ul-li {
+            cursor: pointer;
+            border: 1px solid green;
+
+            
+        }
+        .ul-li:hover{
+            background-color: #dd6f46;
+        }
+
+        .ul-li:hover .li-show {
+            display: block;
+
+        }
+
+
+        .main-r {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 280px;
+            width: 520px;
+            margin: 10px 0 0 10px;
+            overflow: hidden;
+            position: relative;
+            background-color: gray;
+        }
+
+        .main-r .poster {
+            position: absolute;
+            height: 280px;
+            width: 520px;
+            left: 0;
+            top: 0;
+        }
+
+        .main-c {
+            display: inline-flex;
+            justify-content: center;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 1;
+            background-color: rgba(0, 0, 0, .5);
+            height: 20px;
+            color: white;
+        }
+
+        .main-c .circl {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0 5px;
+
+        }
+
+        .main-c .circl[active] {
+            background-color: red;
+        }
+
+        .main-bottom {
+            margin: 10px 0 0 10px;
+            width: 520px;
+            height: 201px;
+        }
+
+        .main-inner-r {
+            margin: 10px 0 0 10px;
+        }
+
+
+
+        .main-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 10px 0 0 10px;
+            width: 290px;
+            height: 512px;
+        }
+
+        .main-side1.wang {
+            background-color: #ffe4dd;
+            color: #ff4400;
+        }
+
+        .main-side1,
+        .main-side2 {
+            padding: 6px;
+            font-family: "宋体";
+            font-size: 15px;
+        }
+
+        .main-side1 button {
+            background-color: rgb(253, 58, 24);
+            color: white;
+            width: 70px;
+            height: 30px;
+        }
+
+        .main-side1.ling {
+            color: #ff4400;
+
+        }
+
+        .main-side1.text {
+            font-size: small;
+        }
+
+        .main-side2 {
+            height: 50px;
+            margin: 10px 0 0 10px;
+
+
+        }
+
+        .main-side a {
+            text-decoration: none;
+            color: black;
+            padding-left: 5px;
+        }
+
+        .main-side2 img {
+            height: 40px;
+            width: 40px;
+            padding-left: 5px;
+        }
+
+        .box {
+            margin-left: 153px;
+            width: 1190px;
+            /* height: 500px; */
+            border: 1px solid red;
+        }
+
+        .box-left,
+        .box-right {
+            display: inline-block;
+            border: 1px solid red;
+            width: 49%;
+            margin-left: 5px;
+        }
+
+        .left-goods .box-img {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+<body style="height: 2000px;">
+    <div class="nav-1">
+        <div class="nav-1-left">
+            <div class="dropdown">
+                <span> 中国大陆</span>
+                <div class="dropcontent">
+                    <div class="dh">中国香港</div>
+                    <div class="dh">中国澳门</div>
+                    <div class="dh">澳大利亚</div>
+                </div>
+            </div>
+            <a class="sp"
+                href="https://login.taobao.com/member/login.jhtml?spm=a21bo.2017.754894437.1.5af911d9MHDfvg&f=top&redirectURL=https%3A%2F%2Fwww.taobao.com%2F"
+                style="color: rgb(245, 39, 39);">亲，请登录</a>
+            <a class="sp" href="https://reg.taobao.com/member/reg/fill_mobile.htm">免费注册</a>
+            <span class="sp">手机逛淘宝</span>
+        </div>
+        <div class="nav-1-right" style="padding-left: 550px;">
+            <div class="dropdown">
+                <span class="sp">我的淘宝</span>
+                <div class="dropcontent">
+                    <p class="dh">已买到的宝贝</p>
+                    <p class="dh">我的足迹</p>
+                </div>
+            </div>
+            <span class="sp">购物车</span>
+            <div class="dropdown">
+                <span class="sp">收藏夹</span>
+                <div class="dropcontent">
+                    <p class="dh">收藏的宝贝</p>
+                    <p class="dh">收藏的店铺</p>
+                </div>
+            </div>
+            <span class="sp">商品分类</span>
+            <div class="dropdown">
+                <span class="sp">千牛卖家中心</span>
+                <div class="dropcontent">
+                    <p class="dh">免费开店</p>
+                    <p class="dh">已卖出的宝贝</p>
+                    <p class="dh">出售中的宝贝</p>
+                    <p class="dh">卖家服务市场</p>
+                    <p class="dh">卖家培训中心</p>
+                    <p class="dh">体检中心</p>
+                    <p class="dh">问商友</p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <span class="sp">联系客服</span>
+                <div class="dropcontent">
+                    <p class="dh">消费者客服</p>
+                    <p class="dh">卖家客服</p>
+                </div>
+            </div>
+            <span class="sp">网站导航</span>
+        </div>
+
+    </div>
+    <div class="nav-2">
+        <a href="https://market.m.taobao.com/apps/abs/10/574/52psv?psId=2344150&spm=a21bo.2017.201855.1.ad0b11d9XaOxov">
+            <img src="./淘宝nav2.png" alt="">
+        </a>
+    </div>
+
+    <div class="nav-3">
+        <div class="nav-3-mid">
+            <div class="mid-left">
+                <div>淘宝网</div>
+                <div style="font-size: 20px;color: tomato;">taobao.com</div>
+            </div>
+        </div>
+        <div class="nav-3-mid">
+            <div class="mid-top">
+                <button class="btn">宝贝</button>
+                <button class="btn">天猫</button>
+                <button class="btn">店铺</button>
+            </div>
+            <div class="mid-mid">
+                <input value="连衣裙">
+                <button>搜索</button>
+            </div>
+            <div class="mid-text">
+                <span class="sp">新款连衣裙</span>
+                <span class="sp">四件套</span>
+                <span class="sp">潮流T恤</span>
+                <span class="sp">时尚女鞋</span>
+                <span class="sp">短裤</span>
+                <span class="sp">半身裙</span>
+                <span class="sp">男士外套</span>
+                <span class="sp">墙纸</span>
+                <span class="sp">行车记录仪</span>
+                <span class="sp">新款男鞋</span>
+                <span class="sp">耳机</span>
+                <span class="sp">时尚女包</span>
+                <span class="sp">沙发</span>
+            </div>
+        </div>
+
+        <div class="nav-3-mid">
+            <div>
+                <span>×</span><span>手机淘宝</span>
+            </div>
+            <img src="./手机淘宝二维码.png" alt="">
+        </div>
+
+    </div>
+    <div style="padding-left: 153px;">
+        <div class="nav-4">
+            <div>
+                <span class="nav-4first">主体市场</span>
+                <span> <a href="">天猫</a></span>
+                <span> <a href="">聚划算</a></span>
+                <span> <a href="">天猫超市</a></span>
+                <span>|</span>
+                <span><a href="">淘抢购</a></span>
+                <span><a href="">电器城</a></span>
+                <span><a href="">司法拍卖</a></span>
+                <span><a href="">淘宝心选</a></span>
+                <span><a href="">兴农脱贫</a></span>
+                <span>|</span>
+                <span><a href="">飞猪旅行</a></span>
+                <span><a href="">智能生活</a></span>
+                <span><a href="">苏宁易购</a></span>
+            </div>
+        </div>
+
+    </div>
+    <div class="main">
+        <ul class="main-l">
+            <li class="ul-li">女装/男装/内衣
+                <div class="li-show">
+                    <img src="./轮播1.jpg" alt="">
+                </div>
+            </li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+            <li>女装/男装/内衣</li>
+
+        </ul>
+
+        <div class="main-inner">
+            <div class="main-r" onmouseover="stop()" onmouseout="go()">
+                <img class="poster" src="./轮播1.jpg" alt="">
+                <img class="poster" src="./轮播2.jpg" alt="">
+                <img class="poster" src="./轮播3.jpg" alt="">
+                <img class="poster" src="./轮播4.jpg" alt="">
+                <img class="poster" src="./轮播5.jpg" alt="">
+                <div class="main-c">
+                    <div class="circl" active='a'></div>
+                    <div class="circl"></div>
+                    <div class="circl"></div>
+                    <div class="circl"></div>
+                    <div class="circl"></div>
+                    <div class="num-tip"></div>
+                </div>
+            </div>
+            <div style="margin: 10px 0 0 10px;">理想生活上天猫</div>
+            <hr>
+            <div class="main-bottom">
+                <img src="./轮播下.jpg" alt="">
+                <img src="./轮播下1.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="main-inner-r">
+            <div><img src="./轮播右.jpg" alt=""></div>
+            <div>今日热卖</div>
+            <div><img src="./轮播右下.jpg" alt=""></div>
+        </div>
+
+        <div class="main-side">
+            <img class="main-side1" src="./hi！你好.jpg" alt="">
+            <div class="main-side1">hi！你好</div>
+            <span>
+                <a class="main-side1 ling" href="">领淘金币抵钱</a>
+                <a class="main-side1 ling" href="">会员俱乐部</a>
+            </span>
+            <div class="main-side1 btn">
+                <button>登录</button>
+                <button>注册</button>
+                <button>开店</button>
+            </div>
+            <a class="main-side1 wang" href="">网上有害信息注册专区</a>
+            <div class="main-side1">
+                <a src="" alt="">公告</a>
+                <a src="" alt="">规则</a>
+                <a src="" alt="">论坛</a>
+                <a src="" alt="">安全</a>
+                <a src="" alt="">公益</a>
+                <div class="main-side1 text">95公益周，腾讯、阿里95公益周，腾讯、阿里</div>
+                <div class="main-side1 text">95公益周，腾讯、阿里95公益周，腾讯、阿里</div>
+            </div>
+
+            <div class="main-side2">
+                <div class="main-side2">
+                    <a href="">充话费</a>
+                    <a href="">旅行</a>
+                    <a href="">车险</a>
+                    <a href="">游戏</a>
+                </div>
+                <div class="main-side2">
+                    <a href="">充话费</a>
+                    <a href="">旅行</a>
+                    <a href="">车险</a>
+                    <a href="">游戏</a>
+                </div>
+                <div class="main-side2">
+                    <h3><b>阿里APP</b></h3>
+                    <img src="./淘宝.jpg">
+                    <img src="./天猫.jpg">
+                    <img src="./聚划算.jpg">
+                    <img src="./支付宝.jpg">
+                    <img src="./蚂蚁.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="_flex">
+        <div>
+            <div class="flex-text" style="background-color: tomato;">爱逛好货</div>
+            <hr>
+            <div class="flex-text" style="color: rgb(230, 52, 52);">好店直播</div>
+            <hr>
+            <div class="flex-text" style="color: blue">品质特色</div>
+            <hr>
+            <div class="flex-text" style="color: greenyellow;">实惠热卖</div>
+            <hr>
+            <div class="flex-text" style="color: rgb(231, 50, 186);">猜你喜欢</div>
+            <hr>
+            <div class="flex-text">反馈</div>
+            <hr>
+            <div class="flex-text">暴恐举报</div>
+        </div>
+
+    </div>
+    <div class="box">
+        <div class="box-left">
+            <div>
+                <img src="./有好货.png" alt="">
+                <span>与品质生活不期而遇</span>
+            </div>
+
+            <div class="left-goods">
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h4>圣罗兰 口红礼盒</h4>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="box-right">
+            <div>
+                <img src="./爱逛街png.png" alt="">
+                <span>献给聪明可爱的你</span>
+            </div>
+
+            <div class="left-goods">
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h4>圣罗兰 口红礼盒</h4>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+                <div class="box-img">
+                    <img src="./口红礼盒.jpg" alt="">
+                    <h5>圣罗兰 口红礼盒</h5>
+                    <p>多款色号多种选择 轻松</p>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+<script>
+    let posters = document.querySelectorAll(".main-r .poster")
+    const circles = document.querySelectorAll('.main-c .circl')
+    const numText = document.querySelector('.main-c .num-tip')
+    const parent = posters[0].parentElement
+    numText.innerHTML = '1/' + circles.length
+    const width = 520;
+    for (let i = 0; i < posters.length; i++) {
+        posters[i].style.left = width * i + "px"
+
+    }
+    const speed = 16;
+    let isMoving = false;
+    function move(totalDis) {
+        // 1: 防止出错         
+        if (isMoving) {
+            return;
+        }
+        // 2: 边界值预处理
+        const posters1 = document.querySelectorAll('.main-r .poster')
+
+        const first = posters1[0];
+        const last = posters1[posters1.length - 1]
+        let firstLeft = parseInt(first.style.left)
+        let lastLeft = parseInt(last.style.left)
+        if (firstLeft === 0 && totalDis > 0) {
+            // 当前展示的是第一张，要往右移：把最后一张挪到最前面：
+            parent.removeChild(last)
+            parent.insertBefore(last, first)
+            last.style.left = -width + 'px'
+        }
+        if (lastLeft === 0 && totalDis < 0) {
+            // 当前展示最后一张，往左移,先把第一张挪到最后面：
+            parent.removeChild(first)
+            parent.appendChild(first)
+            first.style.left = width + 'px'
+        }
+        // 3 开始移动            
+        let lefts = []
+        for (let i = 0; i < posters.length; i++) {
+            lefts[i] = parseInt(posters[i].style.left)
+        }
+        isMoving = true;
+        const disPerStep = Math.round(totalDis / 20); // 20步运动width
+        let dis = 0
+        let timerDH = setInterval(function () {
+
+            dis += disPerStep
+            if (Math.abs(dis) >= Math.abs(totalDis)) {
+                clearInterval(timerDH)
+                dis = totalDis
+                for (let i = 0; i < circles.length; i++) {
+                    circles[i].removeAttribute('active')
+                    if (lefts[i] === -dis) {
+                        circles[i].setAttribute('active', 'bxxx')
+                        numText.innerHTML = i + 1 + '/' + circles.length
+                    }
+                }
+                isMoving = false;
+            }
+            for (let i = 0; i < posters.length; i++) {
+                posters[i].style.left = lefts[i] + dis + 'px'
+            }
+        }, speed)
+
+    }
+
+
+    let timer = setInterval(function () {
+        move(-520)
+    }, 2000)
+
+    function stop() {
+        clearInterval(timer)
+    };
+    function go() {
+        clearInterval(timer)
+        timer = setInterval(function () {
+            move(-520)
+        }, 2000)
+    }
+
+
+
+
+
+
+
+</script>

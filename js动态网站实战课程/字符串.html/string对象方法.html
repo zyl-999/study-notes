@@ -1,0 +1,67 @@
+<head>
+
+</head>
+
+<body>
+    <script>
+        // @param (String)str
+        //1.concat()方法 合并数组，连接两个或更多字符串，并返回新的字符串。
+        let arr = [1, 2.3]
+        let y = [4, 4, 5]
+        document.write(arr.concat(y));//[1,2,3,4,4,5]
+        document.body.appendChild(document.createElement('br'));
+
+        //2.charAt()方法，可返回指定位置的字符。
+        let str1 = "hello,world";
+        document.write(str1.charAt(4));   //o
+        document.body.appendChild(document.createElement('br'));
+
+        // 3.indexOf()方法，返回某个指定的字符串值在字符串中首次出现的位置。indexOf() 方法对大小写敏感！
+        let str2 = "nihao,Lynn"
+        document.write(str2.indexOf("nihao") + "<br />");// 0
+        document.write(str2.indexOf("Lynn") + "<br />");  // 6
+
+        // 4.lastIndexOf() 方法可返回一个指定的字符串值最后出现的位置，在一个字符串中的指定位置从后向前搜索。
+        document.write(str2.lastIndexOf("nihao")); // 0
+        document.body.appendChild(document.createElement('br'));
+
+        //5.startsWith()方法，用于检测字符串是否以指定的子字符串开始。
+        //如果是以指定的子字符串开头返回 true，否则 false。startsWith() 方法对大小写敏感。
+        let str3 = "good morning";
+        document.write(str3.startsWith("morning", 5));//返回ture，
+        document.body.appendChild(document.createElement('br'));
+
+        // 6.substring() 方法用于提取字符串中介于两个指定下标之间的字符。返回一个新的字符串，
+        // 该字符串值包含 stringObject 的一个子字符串，其内容是从 start 处到 stop-1 处的所有字符，其长度为 stop 减 start。
+        let str4 = "hello world";
+        document.write(str4.substring(3, 7));//返回 lo w
+        document.body.appendChild(document.createElement('br'));
+
+        //7.split(),将字符串分割成一个字符串数组
+        let str5 = "how are you today?"
+        document.write(str5.split(" "));//how,are,you,today?
+        document.write(str5.split(""));//h,o,w, ,a,r,e, ,y,o,u, ,t,o,d,a,y,?
+        document.write(str5.split("are", 1));//how
+        document.write(str5.split("you", 2));//how are, today?
+        document.body.appendChild(document.createElement('br'));
+
+        //8.trim(),去除字符串两边的空白
+
+        let str6 = "  how are you today?   "
+        document.write(str6.trim());// how are you today?
+
+        // 9.replace(),在字符串中查找匹配的子串， 并替换与正则表达式匹配的子串。
+        let str7 = "how are you today?"
+        document.write(str7.replace("today", "yestoday"));
+
+        // 10.toLowerCase(),把字符串转换为小写
+        let str = "Runoob";
+        document.write(str.toLowerCase());//runoob
+
+
+
+
+
+
+    </script>
+</body>

@@ -1,8 +1,20 @@
 <head>
-
+<style>
+  .b{
+    background-color: blue;
+  }
+  .a{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+  
+</style>
 </head>
 
 <body>
+
+  <div class="a b"></div>
     <!-- BOM介绍 -->
     <!-- 
     BOM(Broser object Model)浏览器对象模型；
@@ -41,24 +53,14 @@
     document
     screen
      -->
-
-    <!-- <input type="text" value="姓名">
-    <input type="button" value="你好">
-    <input type="search" name="搜索" id="sea"> -->
+   
+    <input onclick="_promt()" type="button" value="你好">  
 
 
-    <script>
-        // document.write(window.location);
-        // document.write(location.href);
-        // document.write(location.search);    
-        // document.write(window.screen.height);
-        // document.write(window.screen.availHeight);
-        // document.write(window.screen.width);
-        // document.write(window.screen.availWidth);
-
+    <script>      
         // let str = confirm('确认提交吗')
         // alert(str)  
-        let str1=prompt('厉害','不厉害')
+        let str1=prompt('请输入你的名字？','')
         alert(str1)
         
     </script>

@@ -1,0 +1,31 @@
+<head>
+
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    let div = document.getElementById("box")
+    let tab = document.createElement("table")
+    div.appendChild(tab)
+
+    function addRow(table, texts, cellName = 'td') {
+        let tR = document.createElement("tr")
+        table.appendChild(tR)
+        for (let i = 0; i < texts.length; i++) {
+            let tD = document.createElement(cellName)
+            tD.innerText = texts[i]
+            tR.appendChild(tD)
+
+        }
+    }
+    addRow(tab, ['姓名', '年龄', "性别"], 'th')
+    addRow(tab, ['粥粥', '20', "man"])
+    addRow(tab, ['凌凌', '18', "girl"])
+
+
+
+
+</script>
+

@@ -1,5 +1,5 @@
 <head>
-   
+
     <style>
         .poster,
         .wrapper {
@@ -38,16 +38,16 @@
 </head>
 
 <body>
-    
+
     <div style=" margin: 50px auto;text-align: center;">
-        <span class="lt" onclick="move(-400)">&lt;</span>
-        <div class="wrapper">
-            <img class="poster" src="./_src='img1'.jpg" alt="">
-            <img class="poster" src="./_src='img2'.jpg" alt="">
-            <img class="poster" src="./_src='img3'.jpg" alt="">
-            <img class="poster" src="./_src='img4'.jpg" alt="">
+        <span class="lt" onclick="move(-400)" onmouseover="cancelTimmer()" onmouseout="setTimmer()">&lt;</span>
+        <div class="wrapper" onmouseover="cancelTimmer()" onmouseout="setTimmer()">
+            <img class="poster" src="../图片/_src='img1'.jpg" alt="">
+            <img class="poster" src="../图片/_src='img2'.jpg" alt="">
+            <img class="poster" src="../图片/_src='img3'.jpg" alt="">
+            <img class="poster" src="../图片/_src='img4'.jpg" alt="">
         </div>
-        <span class="gt" onclick="move(400)">&gt;</span>
+        <span class="gt" onclick="move(400)" onmouseover="cancelTimmer()" onmouseout="setTimmer()">&gt;</span>
     </div>
 
     <script>
@@ -56,32 +56,40 @@
         for (let i = 0; i < posters.length; i++) {
             posters[i].style.left = width * i + 'px'
         }
-
         // 以上是初始化
-        const step = 16;
+        const speed = 16;
         let isMoving = false;
-        function move(totalDis) {
+        function move(totalDis) {  
+            // 1: 防止出错         
             if (isMoving) {
                 return;
             }
-            
-            let firsLeft = parseInt(posters[0].style.left)
-            if (firsLeft === 0 && totalDis > 0) {
-                // 当前展示的是第一张，不能往右移
-                return;
+            // 2: 边界值预处理
+            const posters = document.querySelectorAll('.wrapper .poster')
+            const first = posters[0];
+            const last = posters[posters.length - 1]
+            let firstLeft = parseInt(first.style.left)
+            let lastLeft = parseInt(last.style.left)
+            if (firstLeft === 0 && totalDis > 0) {
+                // 当前展示的是第一张，要往右移：把最后一张挪到最前面：
+                last.parentElement.removeChild(last)
+                first.parentElement.insertBefore(last, first)
+                last.style.left = -width + 'px'
             }
-            let lastLeft = parseInt(posters[posters.length - 1].style.left)
             if (lastLeft === 0 && totalDis < 0) {
-                // 当前展示最后一张，不能往左移
-                return;
+                // 当前展示最后一张，往左移,先把第一张挪到最后面：
+                first.parentElement.removeChild(first)
+                last.parentElement.appendChild(first)
+                first.style.left = width + 'px'
             }
-            isMoving = true;
-            const disPerStep = Math.round(totalDis / 20); // 20步运动width
-            let dis = 0
+            // 3 开始移动            
             let lefts = []
             for (let i = 0; i < posters.length; i++) {
                 lefts[i] = parseInt(posters[i].style.left)
             }
+            isMoving = true;
+            const disPerStep = Math.round(totalDis / 20); // 20步运动width
+            let dis = 0
             let timer = setInterval(function () {
                 dis += disPerStep
                 if (Math.abs(dis) >= Math.abs(totalDis)) {
@@ -92,11 +100,21 @@
                 for (let i = 0; i < posters.length; i++) {
                     posters[i].style.left = lefts[i] + dis + 'px'
                 }
-            }, step)
+            }, speed)
         }
 
-        // setInterval(function () {
-        //     move(-400)
-        // }, 2000)
+        let timer = setInterval(function () {
+            move(-400)
+        }, 2000)
+        function cancelTimmer() {
+            clearInterval(timer)
+        }
+        function setTimmer() {
+            clearInterval(timer)
+            timer = setInterval(function () {
+                move(-400)
+            }, 2000)
+        }
+
     </script>
 </body>
