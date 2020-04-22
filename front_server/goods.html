@@ -1,0 +1,88 @@
+<head>
+    <style>
+        .col-1,
+        .col-2 {
+            margin: 10px;
+            display: inline-block;
+        }
+        .container {
+            border: 1px solid red;
+            height: 500px;
+            width: 200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-1">
+        <div>
+            <input id="input">
+            <button onclick="search()">查询</button>
+        </div>
+        <div id="good" class="container"></div>
+    </div>
+    <div class="col-2">
+        <input id="input">
+        <button onclick="detail()">详情</button>
+        <div id="detail" class="container"></div>
+    </div>
+
+
+</body>
+
+<script>
+    const goodWrapper = document.getElementById('good')
+    const goodDetail = document.getElementById('detail')
+    const input = document.getElementById('input')
+
+    function search() {
+        let id = +input.value
+        if (window.isNaN(id)) {
+            return;
+        }
+
+        let xhr = new window.XMLHttpRequest()
+        xhr.open('get', 'http://localhost:8000/getgoods?id=' + id)
+
+        // 有四种请求方式 get 代表查询，post 代表新增， put 代表修改，delete 代表删除
+        // 上面的开启请求 只能是 get和post
+        xhr.onreadystatechange = function () {
+            //onreadystatechange属性，存储函数（或函数名），
+            //每当 readyState 属性改变时，就会调用该函数。
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    let goods = JSON.parse(xhr.response)
+                    // JSON.parse(str)  将字符串转成对象
+                    // JSON.stringify(object)  将对象转成json字符串                    
+                    goodWrapper.innerHTML += `<div>商品id：${goods.id}</div><div>商品名：${goods.name}</di>`
+
+                }
+                console.log(xhr.status)
+                // xhr.status是http请求  返回的 状态码
+                // 很常用：200 304 400 404 500 502 504
+
+            }
+        }
+
+        xhr.send()
+    }
+    // let t = {
+    //     id: 1,
+    //     name: 'xiaogou',
+    //     price: 33,
+    //     type: 'pet',
+    //     img: './i04.jpg',
+    //     detail: 'this is a dog; it is a male dog and i.......'
+    // }
+    // console.log(JSON.stringify(t))
+
+</script>
+<!-- 
+    /**
+ * http://localhost:8000/uuuu/eee?id=5&name=zzz  一个url分成三个部分
+ * 1.域名   http://localhost:8000  协议，ip 端口号
+ * 2.uri    /uuuu/eee    域名之后 第一个#或?之前  （uri 统一资源定位符）
+ * 3.参数  id=5&name=zzz
+ * /
+ -->

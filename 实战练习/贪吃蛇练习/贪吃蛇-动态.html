@@ -1,0 +1,108 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            outline: 1px solid red;
+        }
+
+        .in {
+            position: absolute;
+            background-color: blue;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<div class="box">
+
+</div>
+<script>
+    const row = 40;
+    const col = 50;
+    const width = 10;
+    const arr = [];
+    for (let i = 0; i < row; i++) {
+        arr[i] = [];
+        for (let j = 0; j < col; j++) {
+            arr[i][j] = "";
+        }
+    }
+    const box = document.getElementsByClassName('box')[0]
+    box.style.height = row * width + 'px';
+    box.style.width = col * width + 'px';
+
+    //  有方向 U D L R
+    arr[0][0] = "D"
+    arr[1][0] = "D"
+    arr[2][0] = "D"
+
+    let head = { y: 2, x: 0 }
+    let tail = { y: 0, x: 0 }
+    function data() {
+        let tailY = tail.y;
+        let tailX = tail.x;
+        switch (arr[tail.y][tail.x]) {
+            case "D":
+                tail.y++;
+                break;
+            case "R":
+                tail.x++;
+                break;
+            case "L":
+                tail.x--;
+                break;
+            case "U":
+                tail.y--;
+                break;
+
+        }
+        arr[tailY][tailX] = '';
+
+        switch (arr[head.y][head.x]) {
+            case "D":
+                head.y++;
+                arr[head.y][head.x] = "D";
+                break;
+            case "R":
+                head.x++;
+                arr[head.y][head.x] = "R";
+                break;
+            case "L":
+                head.x--;
+                arr[head.y][head.x] = "L";
+                break;
+            case "U":
+                head.y--;
+                arr[head.y][head.x] = "U";
+                break;
+
+        }
+
+    }
+
+    function draw() {
+        box.innerHTML = '';
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (/^[UDLR]$/.test(arr[i][j])) {
+                    let d = document.createElement('div')
+                    d.className = 'in';
+                    d.style.left = j * width + 'px';
+                    d.style.top = i * width + 'px';
+                    box.appendChild(d)
+                }
+            }
+        }
+    }
+    draw()
+    setInterval(function () {
+        data()
+        draw()
+    }, 500)
+
+
+</script>

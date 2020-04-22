@@ -1,0 +1,79 @@
+<head>
+    <style>
+        .col-1,
+        .col-2 {
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .container {
+            border: 1px solid red;
+            height: 500px;
+            width: 200px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-1">
+        <div>
+            <input id="input">
+            <button onclick="search()">查询</button>
+        </div>
+        <div id="good" class="container"></div>
+    </div>
+    <div class="col-2">
+        <input id="input1">
+        <button onclick="detail()">详情</button>
+        <div id="detail" class="container"></div>
+    </div>
+</body>
+<script>
+    const goodWrapper = document.getElementById('good')
+    const goodDetail = document.getElementById('detail')
+    const input = document.getElementById('input')
+    const input1 = document.getElementById('input1')
+
+    function com(input) {
+        return Promise(function (resolve, reject) {
+            let id = +input.value
+            if (window.isNaN(id)) {
+                return;
+            }
+            let xhr = new window.XMLHttpRequest()
+            xhr.open('get', 'http://localhost:8000/getgoods?id=' + id)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        let goods = JSON.parse(xhr.response)
+                        resolve(goods)
+                    } else {
+                        reject('mistake')
+                    }
+                }
+            }
+            xhr.send()
+        })
+    }
+
+    async function search() {
+        let res = await com(input)
+        goodWrapper.innerHTML = `<div>商品id：${res.id}</div><div>商品名：${res.name}</di>`
+    }
+    //下面代码效果与前面效果是一样的
+    function detail() {
+        com(input1).then(res => {
+            goodDetail.innerHTML = `<div>detial:${res.detail}</div>`
+        }).catch(err => {
+            console.log('err')
+        }).fananly(fal => {
+            console.log('perform this step regardless of whether it was right or wrong.')
+        })
+    }
+    // 以下称为异步， async  异步总是需要等待同步（ sync ）执行完毕才会执行
+    // 事件绑定，click.....dom事件 的监听器
+    // 定时器 
+
+</script>

@@ -1,0 +1,237 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            outline: 1px solid red;
+        }
+
+        .in {
+            position: absolute;
+            background-color: blue;
+            width: 10px;
+            height: 10px;
+        }
+
+        .in.headcolor {
+            background-color: red;
+
+        }
+
+        .in.tailcolor {
+            background-color: green;
+
+        }
+
+        @keyframes change {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.1;
+            }
+        }
+
+        .food {
+            position: absolute;
+            background-color: blue;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            animation: change 0.7s ease-in-out infinite;
+        }
+    </style>
+</head>
+<div class="box">
+
+</div>
+<script>
+    const row = 40;
+    const col = 50;
+    const width = 10;
+    const speed = 250;
+    const arr = [];
+    for (let i = 0; i < row; i++) {
+        arr[i] = [];
+        for (let j = 0; j < col; j++) {
+            arr[i][j] = "";
+        }
+    }
+    const box = document.getElementsByClassName('box')[0]
+    box.style.height = row * width + 'px';
+    box.style.width = col * width + 'px';
+
+    let headSite
+    let tailSite
+    function getNextSite(x, y) {
+        switch (arr[x][y]) {
+            case "D":
+                return [x + 1, y];
+            case "R":
+                return [x, y + 1];
+            case "L":
+                return [x, y - 1];
+            case "U":
+                return [x - 1, y];
+
+        }
+        return [x, y]
+    }
+
+    function dataTrans() {
+        //头部移动判断：
+        let nextHead = getNextSite(headSite[0], headSite[1])
+        // 数据转换时要做判断，不能吃到自身（尾部除外），也不能超出边界，注意头尾相连时的情况。
+        if (nextHead[0] < 0 || nextHead[0] >= row || nextHead[1] < 0 || nextHead[1] >= col) {
+            alert("不能超出边界");
+            clearInterval(timer)
+            return;
+        };
+        if (/^[UDRL]$/.test(arr[nextHead[0]][nextHead[1]]) && (nextHead[0] !== tailSite[0] || nextHead[1] !== tailSite[1])) {
+            alert("不能吃到自身")
+            clearInterval(timer)
+            return;
+        }
+        // 开始移动：先移动尾部，后移动头部,否则首尾相接时，会覆盖为''
+        const eatfood = arr[nextHead[0]][nextHead[1]] === 'food'
+        //没有吃到食物，尾部才移动
+        if (!eatfood) {
+            // 尾部移动
+            let bufY = tailSite[0]
+            let bufX = tailSite[1]
+            switch (arr[tailSite[0]][tailSite[1]]) {
+                case "D":
+                    tailSite[0]++;
+                    break;
+                case "R":
+                    tailSite[1]++;
+                    break;
+                case "L":
+                    tailSite[1]--;
+                    break;
+                case "U":
+                    tailSite[0]--;
+                    break;
+
+            }
+            arr[bufY][bufX] = '';
+
+        } else {
+            // 吃到食物后，要生成下一个食物！
+            productFood()
+        }
+
+        arr[nextHead[0]][nextHead[1]] = arr[headSite[0]][headSite[1]]
+        headSite = nextHead;
+    };
+    function productFood() {
+        //先找出空白地方
+        let count = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] == '') {
+                    count++
+                }
+            }
+        }
+        //按顺序找到空白地方，放置食物
+        const rand = Math.floor(Math.random() * count)
+        let nextEmpNo = 0;
+        for (let ri = 0; ri < arr.length; ri++) {
+            let row = arr[ri]
+            for (let i = 0; i < row.length; i++) {
+                if (row[i] == '') {
+                    if (rand === nextEmpNo) {
+                        row[i] = 'food'
+                        return
+                    } else {
+                        nextEmpNo++;
+                    }
+                }
+            }
+        }
+    }
+
+    function draw() {
+        box.innerHTML = '';
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (/^[UDLR]$/.test(arr[i][j])) {
+                    let d = document.createElement('div')
+                    d.className = 'in';
+                    if (headSite[0] === i && headSite[1] === j) {
+                        d.className += " headcolor"
+                    };
+                    if (tailSite[0] === i && tailSite[1] === j) {
+                        d.className += " tailcolor"
+                    }
+                    d.style.left = j * width + 'px';
+                    d.style.top = i * width + 'px';
+                    box.appendChild(d)
+
+                } else if ('food' === arr[i][j]) {
+                    let d = document.createElement('div')
+                    d.className = 'food'
+                    d.style.left = j * width + 'px';
+                    d.style.top = i * width + 'px';
+                    box.appendChild(d)
+                }
+
+            }
+        }
+    }
+    function move() {
+        dataTrans()
+        draw()
+    }
+
+    //  有方向 U D L R 并绘制蛇
+    arr[0][0] = "D"
+    arr[1][0] = "D"
+    arr[2][0] = "D"
+    arr[3][0] = "D"
+    arr[4][0] = "R"
+
+
+    headSite = [4, 0]
+    tailSite = [0, 0]
+    productFood()
+    draw()
+
+    timer = setInterval(() => {
+        move()
+    }, speed)
+
+    window.addEventListener('keyup', e => {
+        console.log(e.key)
+        let x = headSite[0]
+        let y = headSite[1]
+        if (e.key == "ArrowRight" & arr[x][y] !== "L") {
+            arr[x][y] = "R"
+        }
+        else if (e.key == "ArrowLeft" & arr[x][y] !== "R") {
+            arr[x][y] = "L"
+        }
+        else if (e.key == "ArrowUp" & arr[x][y] !== "D") {
+            arr[x][y] = "U"
+        }
+        else if (e.key == "ArrowDown" & arr[x][y] !== "U") {
+            arr[x][y] = "D"
+        }
+        else {
+            return;
+        }
+        clearInterval(timer)
+        move()
+        timer = setInterval(() => {
+            move()
+        }, speed)
+
+    }) 
+</script>

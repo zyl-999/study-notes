@@ -1,0 +1,161 @@
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .box {
+            position: relative;
+            outline: 1px solid red;
+        }
+
+        .in {
+            position: absolute;
+            background-color: blue;
+            width: 10px;
+            height: 10px;
+        }
+
+        .in.headcolor {
+            background-color: red;
+            
+        }
+
+        .in.tailcolor {
+            background-color: green;
+            
+        }
+    </style>
+</head>
+<div class="box">
+
+</div>
+<script>
+    const row = 40;
+    const col = 50;
+    const width = 10;
+    const arr = [];
+    for (let i = 0; i < row; i++) {
+        arr[i] = [];
+        for (let j = 0; j < col; j++) {
+            arr[i][j] = "";
+        }
+    }
+    const box = document.getElementsByClassName('box')[0]
+    box.style.height = row * width + 'px';
+    box.style.width = col * width + 'px';
+
+    let headSite
+    let tailSite
+    function getNextSite(x, y) {
+        switch (arr[x][y]) {
+            case "D":
+                return [x + 1, y];
+            case "R":
+                return [x, y + 1];
+            case "L":
+                return [x, y - 1];
+            case "U":
+                return [x - 1, y];
+
+        }
+        return [x, y]
+    }
+
+    function data() {
+        //头部移动判断：
+        let nextHead = getNextSite(headSite[0], headSite[1])
+        // 数据转换时要做判断，不能吃到自身（尾部除外），也不能超出边界，注意头尾相连时的情况。
+        if (nextHead[0] < 0 || nextHead[0] >= row || nextHead[1] < 0 || nextHead[1] >= col) {
+            alert("不能超出边界");
+            return;
+        };
+        if (arr[nextHead[0]][nextHead[1]] !== "" && (nextHead[0] !== tailSite[0] || nextHead[1] !== tailSite[1])) {
+            alert("不能吃到自身")
+            return;
+        }
+        // 开始移动：先移动尾部，后移动头部,否则首尾相接时，会覆盖为''
+        // 尾部移动
+        let bufY = tailSite[0]
+        let bufX = tailSite[1]
+        switch (arr[tailSite[0]][tailSite[1]]) {
+            case "D":
+                tailSite[0]++;
+                break;
+            case "R":
+                tailSite[1]++;
+                break;
+            case "L":
+                tailSite[1]--;
+                break;
+            case "U":
+                tailSite[0]--;
+                break;
+
+        }
+        arr[bufY][bufX] = '';
+
+        arr[nextHead[0]][nextHead[1]] = arr[headSite[0]][headSite[1]]
+        headSite = nextHead;
+    };
+
+    function draw() {
+        box.innerHTML = '';
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (/^[UDLR]$/.test(arr[i][j])) {
+                    let d = document.createElement('div')
+                    d.className = 'in';
+                    if (headSite[0] === i && headSite[1] === j) {
+                        d.className += " headcolor"
+                    };
+                    if (tailSite[0] === i && tailSite[1] === j) {
+                        d.className += " tailcolor"
+                    }
+                    d.style.left = j * width + 'px';
+                    d.style.top = i * width + 'px';
+                    box.appendChild(d)
+                }
+            }
+        }
+    }
+    //  有方向 U D L R 并绘制蛇
+    arr[0][0] = "D"
+    arr[1][0] = "D"
+    arr[2][0] = "D"
+    arr[3][0] = "D"
+    arr[4][0] = "R"
+    
+
+    headSite = [4, 0]
+    tailSite = [0, 0]
+    draw()
+
+    // setInterval(function () {
+        data()
+        draw()
+    // }, 500)
+
+    window.addEventListener('keyup', e => {
+        console.log(e.key)
+        let x = headSite[0]
+        let y = headSite[1]
+        if (e.key == "ArrowRight" & arr[x][y] !== "L") {
+            arr[x][y] = "R"
+        }
+        else if (e.key == "ArrowLeft" & arr[x][y] !== "R") {
+            arr[x][y] = "L"
+        }
+        else if (e.key == "ArrowUp" & arr[x][y] !== "D") {
+            arr[x][y] = "U"
+        }
+        else if (e.key == "ArrowDown" & arr[x][y] !== "U") {
+            arr[x][y] = "D"
+        }
+        else {
+            return;
+        }
+        data();
+        draw();
+    }) 
+</script>

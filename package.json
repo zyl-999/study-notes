@@ -1,0 +1,24 @@
+{
+  "name": "study-notes",
+  "version": "1.0.0",
+  "description": "个人学习笔记",
+  "private": true,
+  "dependencies": {
+    "urlencode": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "htfw": "node ./server/server.js",
+    "qianduan": "node ./front_server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyl-999/study-notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zyl-999/study-notes/issues"
+  },
+  "homepage": "https://github.com/zyl-999/study-notes#readme"
+}

@@ -1,0 +1,58 @@
+<head>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .box {
+            position: relative;
+            outline: 1px solid red;
+        }
+
+        .in {
+            position: absolute;
+            background-color: blue;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<div class="box">
+
+</div>
+<script>
+    const row = 40;
+    const col = 50;
+    const width = 10;
+    const arr = [];
+    for (let i = 0; i < row; i++) {
+        arr[i]=[];
+        for (let j = 0; j < col; j++) {
+            arr[i][j] = false;
+        }
+    }
+    const box = document.getElementsByClassName('box')[0]
+    box.style.height = row * width + 'px';
+    box.style.width = col * width + 'px';
+
+
+    arr[5][5] = true
+    arr[5][6] = true
+    arr[5][7] = true
+    arr[6][7] = true
+    arr[6][8] = true
+
+     
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (arr[i][j]) {
+                let d = document.createElement('div')
+                d.className = 'in';
+                d.style.left = j * width + 'px';
+                d.style.top = i * width + 'px';
+                box.appendChild(d)
+            }
+        }
+
+    }
+
+</script>

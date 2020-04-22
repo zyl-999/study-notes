@@ -45,7 +45,10 @@
     </style>
 </head>
 
-<body>
+<body style="background-color: white;">
+    <div style="position: fixed;left: 0;top: 0;right: 0;bottom: 0;background-color: rgba(0,0,0,0.5);display: none;" onclick="tip()">
+        <div style="background-color: white;width: 200px;height: 150px;margin: 50px auto;padding:1em;border-radius: 6px;" id='tip'>MEssage</div>
+    </div>
 
     <div class="box">
 
@@ -54,13 +57,13 @@
 </body>
 <script>
     // 1 定义基本信息
-    const col = 30;
-    const row = 20;
+    const col = 20;
+    const row = 12;
     const side = 10;
     const speed = 500;
     let timmer
     const arr = []
-    // 2：由基本信息，初始化 box场地，arr信息，并定义关键函数：dataTrans和draw
+    // 2：由基本信息，初始化 box场地，arr信息，并定义关键函数
 
     for (let i = 0; i < row; i++) {
         arr[i] = []
@@ -71,7 +74,11 @@
     const box = document.getElementsByClassName("box")[0]
     box.style.height = row * side + "px";
     box.style.width = col * side + "px";
-
+    function tip(msg) {
+        let div = document.getElementById('tip')
+        div.innerText = msg
+        div.parentElement.style.display = msg ? 'unset' : 'none'
+    }
     function getNextSite(x, y) {
         switch (arr[x][y]) {
             case 'U':// 行数-1
@@ -91,23 +98,26 @@
         let nextHead = getNextSite(headSite[0], headSite[1])
         // 数据转换时要做判断，不能吃到自身（尾部除外），也不能超出边界，注意头尾相连时的情况。
         if (nextHead[0] < 0 || nextHead[0] >= row || nextHead[1] < 0 || nextHead[1] >= col) {
-            alert('不能超出边界')
+            tip('不能超出边界')
+            console.log('----after----')
             clearInterval(timmer)
             return;
         }
         if (/^[ULDR]$/.test(arr[nextHead[0]][nextHead[1]]) && (nextHead[0] !== tailSite[0] || nextHead[1] !== tailSite[1])) {
             // 是自身  且  不是尾部
-            alert('不能吃到自身！')
+            tip('不能吃到自身！')
             clearInterval(timmer)
             return;
         }
         // 开始移动：先移动尾部，后移动头部：
         const eatFood = arr[nextHead[0]][nextHead[1]] === 'food'
         // 没有吃到食物，尾部才移动
-        if (!eatFood) {            
-            let bufY = tailSite[0]
-            let bufX = tailSite[1]
-            switch (arr[tailSite[0]][tailSite[1]]) {
+        if (!eatFood) {
+            // const bufY = tailSite[0]
+            // const bufX = tailSite[1]
+            const direct = arr[tailSite[0]][tailSite[1]]
+            arr[tailSite[0]][tailSite[1]] = ''
+            switch (direct) {
                 case 'U':// 行数-1
                     tailSite[0]--;
                     break;
@@ -120,8 +130,9 @@
                 case 'R': // +1
                     tailSite[1]++;
             }
-            arr[bufY][bufX] = ''
-        }else{
+            // arr[bufY][bufX] = ''
+        } else {
+
             // 吃到食物后，要生成下一个食物！
             generateFood()
         }
@@ -131,12 +142,44 @@
         arr[nextHead[0]][nextHead[1]] = arr[headSite[0]][headSite[1]]
         headSite = nextHead;
     }
+    function generateFood() {
+        // 先统计有多少个空白位置
+        let count = 0
+        for (let row of arr) {
+            for (ch of row) {
+                if (ch === '') {
+                    count++
+                }
+            }
+        }
+        // 生成随机数
+        const rand = Math.floor(Math.random() * count)
+        console.log(count, rand)
+        // 顺序找到第 rand 个空位置，放置食物
+        let nextEmpNo = 0  // 下一个空白的序号
+        for (let ri = 0; ri < arr.length; ri++) {
+            const row = arr[ri]
+            for (let i = 0; i < row.length; i++) {
+                if (row[i] === '') {
+                    if (rand === nextEmpNo) {
+                        // ri ，i 处放置食物
+                        row[i] = 'food'
+                        return;
+                    } else {
+                        nextEmpNo++
+                    }
+                }
+            }
+        }
+    }
+
     function draw() {
         box.innerHTML = ''
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr[i].length; j++) {
                 if (/^[ULDR]$/.test(arr[i][j])) {
                     let d = document.createElement("div")
+                    // d.innerText=arr[i][j]
                     d.className = "in"
                     if (headSite[0] === i && headSite[1] === j) {
                         // 头部：
@@ -163,42 +206,14 @@
         dataTrans()
         draw()
     }
-    function generateFood() {
-        // 先统计有多少个空白位置
-        let count = 0
-        for (let row of arr) {
-            for (ch of row) {
-                if (ch === '') {
-                    count++
-                }
-            }
-        }
-        // 生成随机数
-        let rand = Math.floor(Math.random() * count)
-        console.log(count, rand)
-        // 顺序找到第 rand 个空位置，放置食物
-        for (let ri = 0; ri < arr.length; ri++) {
-            const row = arr[ri]
-            for (let i = 0; i < row.length; i++) {
-                if (row[i] === '') {
-                    if (rand === 0) {
-                        // ri ，i 处放置食物
-                        row[i] = 'food'
-                        return;
-                    } else {
-                        rand--
-                    }
-                }
-            }
-        }
-    }
 
     // 3：定义初始的蛇信息，并绘制： 'U', 'L', 'D', 'R', ''
     arr[0][0] = 'D'
     arr[1][0] = 'D'
-    arr[2][0] = 'D'   
+    arr[2][0] = 'D'
     let headSite = [2, 0]
     let tailSite = [0, 0]
+    generateFood()
     draw()
 
     // 4： 动起来
@@ -227,12 +242,10 @@
         }
         clearInterval(timmer)
         move()
-        timmer = setInterval(() => {
-            move()
-        }, speed);
+        timmer = setInterval(move, speed);
     })
 
 
     // 生成随机食物
-    generateFood()
+
 </script>

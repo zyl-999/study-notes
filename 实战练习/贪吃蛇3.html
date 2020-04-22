@@ -67,7 +67,7 @@
 
     }
     function dataTrans() {
-        //头部移动:
+        //头部移动判断:
         let nextHead = getNextSite(headSite[0], headSite[1])
         // 数据转换时要做判断，不能吃到自身（尾部除外），也不能超出边界，注意头尾相连时的情况。
         if (nextHead[0] < 0 || nextHead[0] >= row || nextHead[1] < 0 || nextHead[1] >= col) {
@@ -76,7 +76,7 @@
         }
         if (arr[nextHead[0]][nextHead[1]] !== '' && (nextHead[0] !== tailSite[0] || nextHead[1] !== tailSite[1])) {
             // 是自身  且  不是尾部
-            alert('不能迟到自身！')
+            alert('不能吃到自身！')
             return;
         }
         // 开始移动：先移动尾部，后移动头部,否则首尾相接时，会覆盖为''
@@ -98,27 +98,10 @@
                 tailSite[1]++;
         }
         arr[bufY][bufX] = ''
-        
+
         // 头部移动:
         arr[nextHead[0]][nextHead[1]] = arr[headSite[0]][headSite[1]]
         headSite = nextHead;
-        // switch (arr[headSite[0]][headSite[1]]) {
-        //     case 'U':// 行数-1
-        //         headSite[0]--;
-        //         arr[headSite[0]][headSite[1]] = 'U'
-        //         break;
-        //     case 'D':// +1
-        //         headSite[0]++;
-        //         arr[headSite[0]][headSite[1]] = 'D'
-        //         break;
-        //     case 'L': // 列数-1
-        //         headSite[1]--;
-        //         arr[headSite[0]][headSite[1]] = 'L'
-        //         break;
-        //     case 'R': // +1
-        //         headSite[1]++;
-        //         arr[headSite[0]][headSite[1]] = 'R'
-        // }       
     }
     function draw() {
         box.innerHTML = ''
@@ -151,17 +134,17 @@
     arr[5][0] = 'D'
     arr[6][0] = 'D'
     arr[7][0] = 'R'
-    
+
     headSite = [7, 0]
     tailSite = [0, 0]
     draw()
 
     // 4： 动起来
     // 
-    // setInterval(() => {
-    //     dataTrans()
-    //     draw()
-    // }, 500);
+    setInterval(() => {
+        dataTrans()
+        draw()
+    }, 500);
 
     window.addEventListener("keyup", e => {
         console.log(e.key)
