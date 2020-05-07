@@ -1,0 +1,60 @@
+<!-- 一个完整的服务：
+查看列表：对应各种列表搜索
+新增元素
+修改元素  
+查看单个元素详情  各种跳转
+删除元素  （物理删除 逻辑删除）
+ -->
+<div>创建商品</div>
+<form id="form">
+    <label for="" action="">
+        <span>商品名</span>
+        <input name="name" type="text">
+    </label>
+    <label for="">
+        <span>价格</span>
+        <input name="price" type="text">
+    </label>
+    <label for="">
+        <span>类型</span>
+        <input name="type" type="text">
+    </label>
+    <label for="">
+        <span>图片</span>
+        <input name="img" type="text">
+    </label>
+    <label for="">
+        <span>描述</span>
+        <input name="detail" type="text">
+    </label>
+</form>
+<div>
+    <button onclick="submit()">确定</button>
+    <input type="reset">
+</div>
+<script>
+    function submit() {
+        const form = document.getElementById('form')
+        const goods = {}
+
+        for (let i = 0; i < form.elements.length; i++) {
+            goods[form.elements[i].name] = form.elements[i].value
+        }
+
+
+        const xhr = new XMLHttpRequest()
+        xhr.open('post', 'http://127.0.0.1:8000/create')
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(goods))
+        xhr.onreadystatechange = e => {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // 成功
+            } else {
+                console.log(xhr.readyState, xhr.status)
+            }
+
+        }
+
+
+    }
+</script>
