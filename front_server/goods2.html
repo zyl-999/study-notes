@@ -48,7 +48,7 @@
             }
 
             let xhr = new window.XMLHttpRequest()
-            xhr.open('get', 'http://localhost:8000/getgoods?id=' + id)
+            xhr.open('get', 'http://localhost:8000/getgoods?id=' + id,true)
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {

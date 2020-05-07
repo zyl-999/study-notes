@@ -37,7 +37,7 @@
     const input1 = document.getElementById('input1')
 
     function com(input) {
-        return Promise(function (resolve, reject) {
+        return new Promise(function (resolve, reject) {
             let id = +input.value
             if (window.isNaN(id)) {
                 return;
