@@ -1,0 +1,58 @@
+<body>
+    <style>
+        .border {
+            width: 500px;
+            height: 400px;
+            border: 1px solid red;
+        }
+    </style>
+
+    <h3>污染城市列表</h3>
+    <ul id="aqi-list">
+        <!--   
+<li>第一名：福州（样例），10</li>
+<li>第二名：福州（样例），10</li> -->
+    </ul>
+</body>
+<script>
+    let box = document.createElement('div')
+    box.className = 'border'
+    let text = document.createElement('p')
+    text.innerHTML = 'when are you back, my darling?'
+    document.body.append(box)
+    box.append(text)
+
+    let aqiData = [
+        ["北京", 90],
+        ["上海", 65],
+        ["福州", 70],
+        ["广州", 60],
+        ["成都", 90],
+        ["西安", 100],
+        ["深圳", 97],
+    ];
+
+    (function () {
+        let aqiList = document.getElementById("aqi-list");
+        let aqiArray = [];
+        let cnArray = ["一", "二", "三", "四", "五", "六", '七'];
+        //大于60的放进数组并排序
+        for (let i = 0; i < aqiData.length; i++) {
+            if (aqiData[i][1] >= 60) {
+                aqiArray.push(aqiData[i]);
+                aqiArray.sort(function (a, b) {
+                    return b[1] - a[1];
+                });
+            };
+        };
+        //循环数组，创建节点
+        for (let i = 0; i < aqiArray.length; i++) {
+            let newLi = document.createElement("li");
+            newLi.innerHTML = "第" + cnArray[i] + "名：" + aqiArray[i];
+            aqiList.append(newLi);
+        };
+ 
+    })();
+
+
+</script>

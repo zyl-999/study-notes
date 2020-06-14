@@ -1,0 +1,38 @@
+<script>
+    // window.name = "window"
+    // const obj1 = { name: '1st obj' }
+    // const obj2 = { name: '2nd obj' }
+
+    // function fn(pram1,pram2,parm3){
+    //     console.log(this.name, pram1,pram2,parm3)
+    // }
+    // const fn = (pram) => {
+    //     console.log(this.name, pram)
+    // }
+
+
+    // obj1.fn = fn;
+    // obj1.fn('pppp')
+
+    // obj2.fn = fn
+    // obj2.fn('qqq')
+
+    // fn('xxx')
+    window.name = "window"
+    const obj1 = { name: '1st obj' }
+    const obj2 = { name: '2nd obj' }
+
+    // function fn(pram1, pram2, parm3) {
+    //     console.log(this.name, pram1, pram2, parm3)
+    // }
+    const fn = ( pram1, pram2, parm3)=> {
+        console.log(this.name, pram1, pram2, parm3)
+    }
+    //call和apply是调用fn
+    fn.call(obj1, ['qqq', 'q', 'a'],'2','3')
+    fn.apply(obj2, ['qqq', 'q', 'a'])
+    //bind是返回一个新函数
+    // let fn2 = fn.bind(obj2, '1', '2','3')
+    // fn2()
+
+</script>

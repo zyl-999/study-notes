@@ -1,0 +1,25 @@
+<h1>hello</h1>
+<h4>hello</h4>
+<div style="border: 1px solid red;width: 150px;height:150px;" id="parent">
+    <p style="position: fixed;top:0;;left:0px;color: red;" id="p" >
+        world
+    </p>
+    <a href="http://www.baidu.com" onclick="event.preventDefault()" target='_blank'>baidu</a>
+</div>
+<script>
+    const body = document.body
+    const parent = document.getElementById('parent')
+    const p = document.querySelector('#p')
+    body.addEventListener('click', e => {
+        console.log('body')
+        // e.stopPropagation()//让事件停止传播
+    }, false)
+    parent.addEventListener('click', e => {
+        console.log('parent')
+        // e.stopPropagation()
+    }, false)
+    p.addEventListener('click', e => {
+        console.log('p')
+        e.stopPropagation()
+    }, false)
+</script>

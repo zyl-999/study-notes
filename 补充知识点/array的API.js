@@ -1,13 +1,13 @@
 let arr = [1, 3, 2, 5, 7, 4, 3, 9, 8, 0]
 // 过滤
 let res = arr.filter(function (ele, ind, array) {
-    // console.log(ele,ind,array)
+    console.log(ele,ind,array)
     return ele % 3 === 0
 
 })
 // 单纯的遍历
 arr.forEach((ele, index, arry) => {
-    // console.log(ele,index,arry)
+    console.log(ele,index,arry)
 })
 
 res = arr.map(ele => String.fromCharCode('a'.charCodeAt(0) + ele))

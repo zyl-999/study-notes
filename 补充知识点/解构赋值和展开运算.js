@@ -67,10 +67,3 @@ function fn(arr, index, delLen, ...items) {
 arr5 = fn(arr5, 0, 2, 3, 4, 5, 6)
 console.log(arr5) // // 1,3,4,5,6
 
-if(typeof(Storage)!=="undefined")
-{
-    console.log("是的! 支持 localStorage  sessionStorage 对象!") 
-    // 一些代码.....
-} else {
-    console.log("抱歉! 不支持 web 存储。")
-}
