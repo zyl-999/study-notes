@@ -61,9 +61,24 @@ function fn(arr, index, delLen, ...items) {
         }
         arr5.length -= 1
     }
-    arr = [...arr.slice(0, index), ...items, ...arr.slice(index)]    
+    arr = [...arr.slice(0, index), ...items, ...arr.slice(index)]
     return arr;
 }
 arr5 = fn(arr5, 0, 2, 3, 4, 5, 6)
-console.log(arr5) // // 1,3,4,5,6
+// console.log(arr5) // // 1,3,4,5,6
 
+console.log(parseFloat("1212.19s", 3))
+console.log(parseInt("12s12s"))
+for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+        console.log(i);    // 输出 0 到 9
+    }, 10);
+}
+for (var i = 0; i < 10; i++) {
+    setTimeout(() => {
+        console.log(i);    // 输出 10 到 10
+    }, 10);
+}
+let a = 1
+let a = 2
+console.log(a)

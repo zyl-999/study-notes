@@ -1,0 +1,31 @@
+<style>
+
+</style>
+
+<body class="bdy">
+    <p>此页面跳转到其他页面</p>
+    <a href="./test2.html" cpm="true">跳转到test2</a>
+    <a href="./test3.html">跳转到test3</a>
+    <a href="./test4.html">跳转到test4</a>
+    <a href="">test5</a>
+</body>
+<script>
+    const body = document.body
+    const aTag = document.querySelector("a")
+    body.addEventListener("click", e => {
+        console.log(e.target.tagName)
+        if (e.target.tagName === "A") {
+            const yes = confirm("确定离开当前页面吗？")
+            if (!yes) {
+                e.preventDefault()
+            }
+        }
+        if (e.target.tagName === "P") {
+            const yes = confirm("确定离开当前页面吗？")
+            if (!yes) {
+                e.preventDefault()
+            } 
+        }
+    }, true)
+
+</script>

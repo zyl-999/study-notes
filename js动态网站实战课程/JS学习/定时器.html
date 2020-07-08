@@ -15,12 +15,12 @@
             clearInterval(timer)
             timer = setInterval(function () {
                 s++;
-                oTime.value = addZe(parseInt(s/60)) + ':' + addZe(s % 60)
+                oTime.value = addZe(parseInt(s / 60)) + ':' + addZe(s % 60)
             }, 50);
         }
         oStop.onclick = function () {
             clearInterval(timer)
         }
-
+        
     </script>
 </body>

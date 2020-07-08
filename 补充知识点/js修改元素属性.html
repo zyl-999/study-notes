@@ -1,13 +1,16 @@
-<body>    
-    <div><a href="http://www.baidu.com">baidu</div>
-
+<body>
+    <div><a href="https://www.baidu.com" target="blank">baidu</div>
+    <button onclick="change()">改变网址</button>
 </body>
 <script>
     let btn = document.querySelector("button");
     let oA = document.querySelector("a")
-    flag = 0;
-    btn.onclick = function () {
-        oA.href = "http://www.sina.cn";
+
+    function change() {
+        oA.href = "https://www.sina.cn"
+        // oA.setAttribute('href', "https://www.sina.cn")
+        console.log("===");
     }
 
+    // change()
 </script>
