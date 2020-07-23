@@ -18,21 +18,48 @@
     // obj2.fn('qqq')
 
     // fn('xxx')
-    window.name = "window"
-    const obj1 = { name: '1st obj' }
-    const obj2 = { name: '2nd obj' }
+    // window.name = "window"
+    // const obj1 = { name: '1st obj' }
+    // const obj2 = { name: '2nd obj' }
 
     // function fn(pram1, pram2, parm3) {
     //     console.log(this.name, pram1, pram2, parm3)
     // }
-    const fn = ( pram1, pram2, parm3)=> {
+    // const fn = ( pram1, pram2, parm3)=> {
+    //     console.log(this.name, pram1, pram2, parm3)
+    //箭头函数没有自己的this，采用定义本函数时，外层的this，即window
+    // }
+    // const fn = function fun(pram1, pram2, parm3) {
+    //     console.log(this.name, pram1, pram2, parm3)
+    // }
+    // //call和apply是调用fn
+    // fn.call(obj1, ['qqq', 'q', 'a'], '2ef', '3ef')
+    // fn.apply(obj2, ['qqq', 'q', 'a', 'e'])
+    // //bind是返回一个新函数
+    // let fn2 = fn.bind(obj2, '1', '2', '3')
+    // fn2()
+
+
+    window.name = window
+    const obj1 = { name: '1st obj' }
+    const obj2 = { name: '2nd obj' }
+    function fn(pram1, pram2, parm3) {
         console.log(this.name, pram1, pram2, parm3)
     }
-    //call和apply是调用fn
-    fn.call(obj1, ['qqq', 'q', 'a'],'2','3')
-    fn.apply(obj2, ['qqq', 'q', 'a'])
-    //bind是返回一个新函数
-    let fn2 = fn.bind(obj2, '1', '2','3')
-    fn2()
+
+    const fn2 = (pram1, pram2, parm3) => {//箭头函数
+        console.log(this.name, pram1, pram2, parm3)
+    }
+    // call和apply调用fn
+    fn.call(obj1,['qqq', 'q', 'a'], '2', '3') //返回 1st obj  ['qqq', 'q', 'a'], 2,3
+    fn.apply(obj2, ['qqq', 'q', 'a'])        //返回  2nd obj  qqq q a
+    //call和apply调用fn2
+    // fn2.call(obj1, ['qqq', 'q', 'a'], '2', '3')          //返回 window  ['qqq', 'q', 'a'], 2,3
+    // fn2.apply(obj2, ['qqq', 'q', 'a'])             //返回  window qqq q a apply方法里面的参数必须是在方括号[]里，一 一对应pram1，pram2，pram3
+    // //bind是返回一个新函数
+    // let fn3 = fn2.bind(obj2, '1', '2', '3')
+    // fn3()  
+     // let fn3 = fn.bind(obj2, '1', '2', '3')
+    // fn3()                                                         //返回 2nd obj 1 2 3
 
 </script>

@@ -13,6 +13,7 @@
 <li>第一名：福州（样例），10</li>
 <li>第二名：福州（样例），10</li> -->
     </ul>
+    <button onclick="myFunction()">试一下</button>
 </body>
 <script>
     let box = document.createElement('div')
@@ -22,6 +23,9 @@
     document.body.append(box)
     box.append(text)
 
+    function myFunction() {
+        document.getElementsByTagName("p")[0].setAttribute("style", "color:blue")
+    }
     let aqiData = [
         ["北京", 90],
         ["上海", 65],
@@ -51,7 +55,7 @@
             newLi.innerHTML = "第" + cnArray[i] + "名：" + aqiArray[i];
             aqiList.append(newLi);
         };
- 
+
     })();
 
 

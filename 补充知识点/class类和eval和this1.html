@@ -5,10 +5,11 @@
         // return {}  // 不能有这一句
     }
     // prototype 原型
-    Person.prototype.cheer = function () { 
-        console.log('hello,i\'m ' + this.name)
+    Person.prototype.cheer = function () {
+        // console.log('hello,i\'m ' + this.name)
     }
     // 类 一定是 函数
+    // 函数不一定是类，如箭头函数不是类
 
     // let zhao = new Person('zhaoyanling',18)
     // console.log(zhao,zhao instanceof Person)
@@ -23,10 +24,10 @@
     // eval(str)
 
     function showAge() {
-        console.log('my age is ' + this.age)
+        // console.log('my age is ' + this.age)
     }
     Person.prototype.showAge1 = showAge
-    // window.age=23
+    window.age = 23
     // zhou.showAge1()
     // zhao.showAge1()   
     // showAge() // 里面的this就是全局对象，window、global
@@ -34,43 +35,40 @@
 
     window.hello = "window hello world"
     let obj = {
-        hello: 'hello world'
+        hello: 'hello obj'
     }
     let obj2 = {
-        hello: 'hello 2'
+        hello: 'hello obj2'
     }
-    // {
-        obj.hello1 = function () {
-            // this 就是 obj
-            setTimeout((function () {
-                // this 独立的，默认就是window
-                console.log(this.hello)
-            }).bind(obj), 40)
-        }
-        // obj.hello1 = function () {
-        //     // this 就是 obj
-        //     setTimeout( ()=>{
-        //         // 箭头函数没有自己的this，采用定义本函数时，外层的this
-        //         console.log(this.hello)
-        //     }, 40)
-        // }
-    // }
-
+    
     // obj.hello1 = function () {
     //     // this 就是 obj
-    //     obj.fn = () => {
-    //         // 箭头函数没有自己的this，采用定义本函数时外层的this，且一旦确定保持不变
+    //     setTimeout((function () {
+    //         // this 独立的，默认就是window
     //         console.log(this.hello)
-    //     }
-
+    //     }).bind(obj), 40)
     // }
-    obj.hello1()
-    // obj.fn()
+    // obj.hello1()
+    // obj.hello2 = function () {
+    //     // this 就是 obj
+    //     setTimeout( ()=>{
+    //         // 箭头函数没有自己的this，采用定义本函数时，外层的this
+    //         console.log(this.hello)
+    //     }, 40)
+    // }    
+    // obj.hello2()
+    
+    obj.hello3 = function () {
+        // this 就是 obj
+        obj.fn = () => {
+            // 箭头函数没有自己的this，采用定义本函数时外层的this，且一旦确定保持不变
+            console.log(this.hello)
+        }
+        obj.fn()
+    }  
+    obj.hello3()
 
-    // obj2.fn2 = obj.fn
-    // obj2.fn2()  // 输出的仍然是 obj.hello
-
-
-
+    obj2.fn2 = obj.fn
+    obj2.fn2()  // 输出的仍然是 obj.hello
 
 </script>
