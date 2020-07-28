@@ -11,7 +11,7 @@
             overflow: hidden;
             width: 480px;
             height: 310px;
-            margin: 5px;
+            margin: 5px; 
         }
     </style>
 </head>
@@ -40,27 +40,23 @@
     <div class="item"><img _src="../图片/_src='img1'.jpg" alt=""></div>
 </body>
 <script>
-    let t = Date.now()
-    let oImg = document.getElementsByTagName('img')
-    function render() {
-        let sT = document.documentElement.scrollTop || document.body.scrollTop
-        let cH = document.documentElement.clientHeight
+    window.onload = window.onresize = window.onscroll = function () {
+        let oImg = document.getElementsByTagName('img')
+        let sT = document.body.scrollTop || document.documentElement.scrollTop//考虑兼容
+        let cH = document.body.clientHeight
         for (let i = 0; i < oImg.length; i++) {
             if (oImg[i].offsetTop < sT + cH) {
+                console.log(oImg[19].offsetTop, sT, cH)
                 oImg[i].src = oImg[i].getAttribute('_src')
             }
         }
     }
-    window.onresize = window.onscroll = function () {
-        let now = Date.now();
-        if (now - t < 100) {
-            return;
-        }
-        t = now
-        render()
-    }
-    render()
 
 
+// 分析逻辑
+// 当图片进入可视区加载
+// 实现：
+// 1.获取可视区高度和滚动距离以及图片到顶部的距离
+// 2.图片进入可视区加载
 
 </script>

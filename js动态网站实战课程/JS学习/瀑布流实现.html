@@ -1,4 +1,81 @@
-<head></head>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 966px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0 10px;
+            float: left;
+            border: 1px solid red;
+            width: 300px;
+        }
+
+        ul li {
+            width: 100%;
+            margin: 10px 0;            
+            background: #ccc;
+        }
+    </style>
+</head>
+
 <body>
-    
+    <div id="box">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>
+ 
 </body>
+<script>
+    window.onload = function () {
+        function rnd(m, n) {
+            return parseInt(m + Math.random() * (n - m))
+        }
+        let oBox = document.getElementById('box')
+        let aUl = Array.from(oBox.children)
+        function createLi() {
+            let aLi = document.createElement('li')
+            aLi.style.height = rnd(100, 351) + "px";
+            aLi.style.background = 'rgb(' + rnd(0, 256) + ',' + rnd(0, 256) + ',' + rnd(0, 256) + ')';
+            return aLi
+        }
+        function createLis() {
+            for (let i = 0; i < 20; i++) {
+                // 2生成一个高度和颜色随机的li
+                let aLi = createLi()
+                // 找当前最短的ul
+                aUl.sort((a,b)=>a.offsetHeight-b.offsetHeight)
+                // let arr = []
+                // Array.prototype.sort.call(aUl,(a,b)=>a.scrollHeight-b.scrollHeight)
+                // for (let j = 0; j < aUl.length; j++) {
+                //     arr.push(aUl[j])
+                // }
+                // arr.sort(function (ul1, ul2) {
+                //     return ul1.offsetHeight - ul2.offsetHeight
+                // })
+                // 将li插入到最短的Ul中
+                aUl[0].appendChild(aLi)
+            }
+        }
+        createLis()
+        window.onscroll = function () {
+            let sT = document.body.scrollTop || document.documentElement.scrollTop
+            let cH = document.body.clientHeight
+            console.log(cH,sT,document.body.scrollHeight)
+            let scrollBottom = sT + cH
+            if (document.body.scrollHeight <= scrollBottom) {
+                createLis()
+            }
+        }
+    }
+
+
+</script>
